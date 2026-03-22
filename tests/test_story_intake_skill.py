@@ -69,3 +69,14 @@ def test_story_intake_skill_declares_reusable_commands_and_single_write_command(
     ]
     for item in required_items:
         assert item in text
+
+
+def test_story_triage_template_has_required_list_fields():
+    text = Path("skills/story-intake/templates/story-triage.md").read_text()
+    for field in [
+        "## Story Triage List",
+        "Selection Options:",
+        "Story ID | Title | Description | Existing Tasks | Overview | Open Questions | Compliance Status",
+        "Choose a target story before any write action.",
+    ]:
+        assert field in text
