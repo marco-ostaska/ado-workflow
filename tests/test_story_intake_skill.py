@@ -34,3 +34,18 @@ def test_story_intake_skill_requires_full_flow_before_completion():
     ]
     for item in required_items:
         assert item in text
+
+
+def test_story_intake_skill_declares_required_runtime_state():
+    text = Path("skills/story-intake/SKILL.md").read_text()
+    required_state = [
+        "target story identifier",
+        "condensed story snapshot",
+        "child task snapshot",
+        "open questions",
+        "unsatisfied completion gates",
+        "pending ADO write proposal",
+        "terminal skill state",
+    ]
+    for item in required_state:
+        assert item in text

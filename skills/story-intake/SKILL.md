@@ -29,6 +29,17 @@ Find or accept target stories, present a triage view, assess minimum compliance,
 - compliance evaluated
 - handoff generated
 
+## Runtime State
+
+The skill must track:
+- target story identifier
+- condensed story snapshot
+- child task snapshot
+- open questions
+- unsatisfied completion gates
+- pending ADO write proposal
+- terminal skill state
+
 ## Flow
 
 1. discover open stories assigned to the user or accept explicit IDs
