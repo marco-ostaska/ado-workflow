@@ -55,6 +55,7 @@ def test_story_intake_skill_declares_required_runtime_state():
 def test_story_intake_skill_declares_reusable_commands_and_single_write_command():
     text = Path("skills/story-intake/SKILL.md").read_text()
     required_items = [
+        "## Reusable Commands",
         "resolve-story-input",
         "fetch-story-details",
         "fetch-child-tasks",
@@ -64,6 +65,7 @@ def test_story_intake_skill_declares_reusable_commands_and_single_write_command(
         "draft-compliance-tasks",
         "apply-ado-updates",
         "Only `apply-ado-updates` may write to ADO.",
+        "All `draft_*` commands are read/analysis/drafting steps only.",
     ]
     for item in required_items:
         assert item in text
