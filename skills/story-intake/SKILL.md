@@ -40,6 +40,20 @@ The skill must track:
 - pending ADO write proposal
 - terminal skill state
 
+## Reusable Commands
+
+- `resolve-story-input`
+- `fetch-story-details`
+- `fetch-child-tasks`
+- `summarize-story-intent`
+- `detect-open-questions`
+- `evaluate-compliance`
+- `draft-compliance-tasks`
+- `apply-ado-updates`
+
+Only `apply-ado-updates` may write to ADO.
+All `draft_*` commands are read/analysis/drafting steps only.
+
 ## Flow
 
 1. discover open stories assigned to the user or accept explicit IDs
