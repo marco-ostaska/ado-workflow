@@ -38,6 +38,7 @@ def test_story_intake_skill_requires_full_flow_before_completion():
 
 def test_story_intake_skill_declares_required_runtime_state():
     text = Path("skills/story-intake/SKILL.md").read_text()
+    assert "## Runtime State" in text
     required_state = [
         "target story identifier",
         "condensed story snapshot",
