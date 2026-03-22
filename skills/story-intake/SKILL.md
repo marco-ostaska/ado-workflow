@@ -29,6 +29,25 @@ Find or accept target stories, present a triage view, assess minimum compliance,
 - compliance evaluated
 - handoff generated
 
+## Flow
+
+1. discover open stories assigned to the user or accept explicit IDs
+2. present the triage list before action
+3. user selects the target story
+4. list open questions when the story is ambiguous
+5. evaluate minimum compliance
+6. draft missing compliance tasks when needed
+7. keep the skill open until missing minimum tasks are confirmed, applied, or explicitly deferred
+8. produce a refinement handoff
+9. stop after producing the refinement handoff
+
+## Terminal States
+
+- `completed`
+- `completed_with_deferrals`
+- `blocked`
+- `cancelled`
+
 ## ADO Write Rules
 
 - draft first

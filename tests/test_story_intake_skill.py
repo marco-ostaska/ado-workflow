@@ -11,3 +11,22 @@ def test_story_intake_skill_has_required_sections():
         "## ADO Write Rules",
     ]:
         assert section in text
+
+
+def test_story_intake_skill_requires_full_flow_before_completion():
+    text = Path("skills/story-intake/SKILL.md").read_text()
+    required_items = [
+        "discover open stories assigned to the user or accept explicit IDs",
+        "present the triage list before action",
+        "user selects the target story",
+        "list open questions when the story is ambiguous",
+        "evaluate minimum compliance",
+        "keep the skill open until missing minimum tasks are confirmed, applied, or explicitly deferred",
+        "produce a refinement handoff",
+        "stop after producing the refinement handoff",
+        "completed_with_deferrals",
+        "blocked",
+        "cancelled",
+    ]
+    for item in required_items:
+        assert item in text
