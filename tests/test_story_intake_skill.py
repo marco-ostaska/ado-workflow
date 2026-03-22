@@ -80,3 +80,16 @@ def test_story_triage_template_has_required_list_fields():
         "Choose a target story before any write action.",
     ]:
         assert field in text
+
+
+def test_refinement_handoff_template_has_required_sections():
+    text = Path("skills/story-intake/templates/refinement-handoff.md").read_text()
+    for field in [
+        "Target Story:",
+        "Story Overview:",
+        "Open Questions:",
+        "Current Child Tasks:",
+        "Compliance Gaps:",
+        "Deferred Items:",
+    ]:
+        assert field in text
