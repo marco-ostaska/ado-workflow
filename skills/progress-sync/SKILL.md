@@ -78,6 +78,18 @@ draft first
 require confirmation before apply
 All content written to Azure DevOps must be in English.
 Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.
+Refuse to apply updates if draft content is not English.
+Refuse to apply updates if draft content contains AI-origin disclosure.
+normalize ADO drafts to natural professional English before apply
+show child-task update drafts before writing
+show the parent-story update draft before writing
+show the pending ADO change package before writing
+
+## Reporting Safeguards
+
+report automated and manual test outcomes separately when both exist
+do not claim tests were run when the user did not report them
+allow deferred items and record them before the skill ends
 
 ## Reusable Commands
 

@@ -81,3 +81,24 @@ def test_progress_sync_skill_declares_commands_and_mapping_rules():
     ]
     for item in required_items:
         assert item in text
+
+
+def test_progress_sync_skill_enforces_ado_rules_and_test_reporting_safeguards():
+    text = Path("skills/progress-sync/SKILL.md").read_text()
+    required_items = [
+        "draft first",
+        "require confirmation before apply",
+        "All content written to Azure DevOps must be in English.",
+        "Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.",
+        "Refuse to apply updates if draft content is not English.",
+        "Refuse to apply updates if draft content contains AI-origin disclosure.",
+        "normalize ADO drafts to natural professional English before apply",
+        "report automated and manual test outcomes separately when both exist",
+        "do not claim tests were run when the user did not report them",
+        "show child-task update drafts before writing",
+        "show the parent-story update draft before writing",
+        "show the pending ADO change package before writing",
+        "allow deferred items and record them before the skill ends",
+    ]
+    for item in required_items:
+        assert item in text
