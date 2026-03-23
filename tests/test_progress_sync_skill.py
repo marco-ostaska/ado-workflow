@@ -122,6 +122,22 @@ def test_work_to_task_mapping_template_has_required_sections():
     assert lines == sections
 
 
+def test_completion_closeout_handoff_template_has_required_sections():
+    text = Path("skills/progress-sync/templates/completion-closeout-handoff.md").read_text()
+    sections = [
+        "## Completion Closeout Handoff",
+        "Target Story:",
+        "Condensed History Of Updates:",
+        "Reported Automated Test Evidence:",
+        "Reported Manual Or E2E Test Evidence:",
+        "Current Story And Task Status:",
+        "Deferred Items:",
+        "Next Step: `completion-closeout`",
+    ]
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    assert lines == sections
+
+
 def test_child_task_updates_template_has_required_sections():
     text = Path("skills/progress-sync/templates/child-task-updates.md").read_text()
     sections = [
