@@ -118,8 +118,5 @@ def test_work_to_task_mapping_template_has_required_sections():
         "Story-Level Coverage Or Parent-Story Impact:",
         "Open Questions Or Ambiguous Items:",
     ]
-    for section in sections:
-        assert section in text
-
-    positions = [text.index(section) for section in sections]
-    assert positions == sorted(positions)
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    assert lines == sections
