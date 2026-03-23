@@ -9,6 +9,10 @@ Local skill set for running a structured Azure DevOps story workflow across four
 
 These skills are designed to work as operational guides for CLI coding agents. They define the expected flow, safeguards, handoffs, and output artifacts for each stage of the workflow.
 
+## License
+
+This repository is licensed under the MIT License. See `LICENSE`.
+
 ## What This Repo Contains
 
 - `skills/story-intake/SKILL.md`
