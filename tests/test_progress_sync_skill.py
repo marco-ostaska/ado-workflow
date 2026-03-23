@@ -120,3 +120,17 @@ def test_work_to_task_mapping_template_has_required_sections():
     ]
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     assert lines == sections
+
+
+def test_child_task_updates_template_has_required_sections():
+    text = Path("skills/progress-sync/templates/child-task-updates.md").read_text()
+    sections = [
+        "## Child Task Updates",
+        "Target Story:",
+        "Task Updates:",
+        "Proposed Status Changes:",
+        "Reported Automated Test Evidence:",
+        "Reported Manual Or E2E Test Evidence:",
+    ]
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    assert lines == sections
