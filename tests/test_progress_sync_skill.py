@@ -37,3 +37,7 @@ def test_progress_sync_skill_requires_full_flow_before_completion():
     ]
     for item in required_items:
         assert item in text
+
+    assert text.index("check completion gates before ending") < text.index(
+        "stop after producing the completion-closeout handoff"
+    )
