@@ -87,6 +87,7 @@ def test_story_refinement_skill_enforces_ado_rules_and_revision_safeguards():
         "show the task revision proposal before writing",
         "replace or revise compliance-only tasks so they match the real work",
         "show the pending ADO change package before writing",
+        "apply only after user confirmation",
         "allow deferred items and record them in the handoff",
     ]
     for rule in required_rules:
