@@ -74,6 +74,8 @@ def test_story_intake_skill_declares_reusable_commands_and_single_write_command(
 def test_story_intake_skill_enforces_ado_language_and_discretion_rules():
     text = Path("skills/story-intake/SKILL.md").read_text()
     required_rules = [
+        "draft first",
+        "require confirmation before apply",
         "All content written to Azure DevOps must be in English.",
         "Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.",
         "Refuse to apply updates if draft content is not English.",
