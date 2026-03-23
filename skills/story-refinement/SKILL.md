@@ -34,6 +34,26 @@ Take a selected story plus user-provided repositories, refine the work into an a
 - handoff generated
 - check completion gates before ending
 
+## Flow
+
+1. confirm the target story context
+2. allow the skill to run in isolation when the user provides enough context
+3. require repositories explicitly provided by the user
+4. review the current story and child tasks
+5. refine the story into a concise technical execution plan
+6. draft task revisions so the tasks match the real work
+7. prepare the pending ADO change package before any write
+8. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
+9. produce a progress-sync handoff
+10. stop after producing the progress-sync handoff
+
+## Terminal States
+
+- `completed`
+- `completed_with_deferrals`
+- `blocked`
+- `cancelled`
+
 ## ADO Write Rules
 
 draft first
