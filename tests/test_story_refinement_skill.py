@@ -105,3 +105,15 @@ def test_execution_plan_template_has_required_sections():
         "Open Questions:",
     ]:
         assert field in text
+
+
+def test_ado_change_package_template_has_required_sections():
+    text = Path("skills/story-refinement/templates/ado-change-package.md").read_text()
+    for field in [
+        "## Pending ADO Change Package",
+        "Target Story:",
+        "Repository Scope:",
+        "Task Revision Proposal:",
+        "Pending Writes Requiring Confirmation:",
+    ]:
+        assert field in text
