@@ -70,6 +70,7 @@ def test_progress_sync_skill_declares_commands_and_mapping_rules():
         "resolve-story-input",
         "fetch-story-details",
         "fetch-child-tasks",
+        "draft-work-to-task-mapping",
         "draft-progress-update",
         "draft-parent-story-update",
         "apply-ado-updates",

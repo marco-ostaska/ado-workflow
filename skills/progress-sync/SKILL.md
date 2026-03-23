@@ -84,6 +84,7 @@ Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.
 - `resolve-story-input`
 - `fetch-story-details`
 - `fetch-child-tasks`
+- `draft-work-to-task-mapping`
 - `draft-progress-update`
 - `draft-parent-story-update`
 - `apply-ado-updates`
