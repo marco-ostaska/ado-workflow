@@ -125,3 +125,19 @@ def test_refinement_handoff_template_has_required_sections():
         "Deferred Items:",
     ]:
         assert field in text
+
+
+def test_story_intake_assets_match_the_design_contract():
+    skill_text = Path("skills/story-intake/SKILL.md").read_text()
+    triage_text = Path("skills/story-intake/templates/story-triage.md").read_text()
+    handoff_text = Path("skills/story-intake/templates/refinement-handoff.md").read_text()
+
+    assert "story triage list" in skill_text
+    assert "stop after producing the refinement handoff" in skill_text
+    assert "record open questions instead of inventing certainty" in skill_text
+    assert "check completion gates before ending" in skill_text
+    assert "## Story Triage List" in triage_text
+    assert "Story ID | Title | Description | Existing Tasks | Overview | Open Questions | Compliance Status" in triage_text
+    assert "Choose a target story before any write action." in triage_text
+    assert "Target Story:" in handoff_text
+    assert "Next Step: `story-refinement`" in handoff_text

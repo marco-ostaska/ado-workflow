@@ -28,6 +28,7 @@ Find or accept target stories, present a triage view, assess minimum compliance,
 - triage output shown
 - compliance evaluated
 - handoff generated
+- check completion gates before ending
 
 ## Runtime State
 
