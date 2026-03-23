@@ -72,3 +72,22 @@ def test_story_refinement_skill_declares_commands_and_user_repo_scope():
     ]
     for item in required_items:
         assert item in text
+
+
+def test_story_refinement_skill_enforces_ado_rules_and_revision_safeguards():
+    text = Path("skills/story-refinement/SKILL.md").read_text()
+    required_rules = [
+        "draft first",
+        "require confirmation before apply",
+        "All content written to Azure DevOps must be in English.",
+        "Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.",
+        "Refuse to apply updates if draft content is not English.",
+        "Refuse to apply updates if draft content contains AI-origin disclosure.",
+        "normalize ADO drafts to natural professional English before apply",
+        "show the task revision proposal before writing",
+        "replace or revise compliance-only tasks so they match the real work",
+        "show the pending ADO change package before writing",
+        "allow deferred items and record them in the handoff",
+    ]
+    for rule in required_rules:
+        assert rule in text
