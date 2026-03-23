@@ -111,6 +111,26 @@ def test_story_refinement_skill_handles_failure_and_blocked_paths():
         assert item in text
 
 
+def test_story_refinement_assets_match_the_design_contract():
+    skill_text = Path("skills/story-refinement/SKILL.md").read_text()
+    plan_text = Path("skills/story-refinement/templates/execution-plan.md").read_text()
+    package_text = Path("skills/story-refinement/templates/ado-change-package.md").read_text()
+    handoff_text = Path("skills/story-refinement/templates/progress-sync-handoff.md").read_text()
+
+    assert "refined story understanding" in skill_text
+    assert "require repositories explicitly provided by the user" in skill_text
+    assert "replace or revise compliance-only tasks so they match the real work" in skill_text
+    assert "check completion gates before ending" in skill_text
+    assert "## Refined Execution Plan" in plan_text
+    assert "Repository Scope:" in plan_text
+    assert "Execution Plan:" in plan_text
+    assert "## Pending ADO Change Package" in package_text
+    assert "Pending Writes Requiring Confirmation:" in package_text
+    assert "## Progress Sync Handoff" in handoff_text
+    assert "Intended Scope Of Each Task:" in handoff_text
+    assert "Next Step: `progress-sync`" in handoff_text
+
+
 def test_execution_plan_template_has_required_sections():
     text = Path("skills/story-refinement/templates/execution-plan.md").read_text()
     for field in [
