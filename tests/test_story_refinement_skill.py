@@ -94,6 +94,23 @@ def test_story_refinement_skill_enforces_ado_rules_and_revision_safeguards():
         assert rule in text
 
 
+def test_story_refinement_skill_handles_failure_and_blocked_paths():
+    text = Path("skills/story-refinement/SKILL.md").read_text()
+    required_items = [
+        "stop as `blocked` when the target story is missing or inaccessible",
+        "stop as `blocked` when repository scope has not been provided",
+        "stop as `blocked` when required ADO data is missing and state exactly what is missing",
+        "record open questions instead of inventing certainty",
+        "do not proceed without confirmation",
+        "report partial write failures",
+        "summarize applied writes after execution",
+        "state what was not applied when a partial write fails",
+        "`completed_with_deferrals` requires listing deferred items before the skill ends",
+    ]
+    for item in required_items:
+        assert item in text
+
+
 def test_execution_plan_template_has_required_sections():
     text = Path("skills/story-refinement/templates/execution-plan.md").read_text()
     for field in [

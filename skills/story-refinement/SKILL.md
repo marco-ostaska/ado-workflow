@@ -84,6 +84,21 @@ normalize ADO drafts to natural professional English before apply
 - apply only after user confirmation
 - allow deferred items and record them in the handoff
 
+## Failure Handling
+
+- stop as `blocked` when the target story is missing or inaccessible
+- stop as `blocked` when repository scope has not been provided
+- stop as `blocked` when required ADO data is missing and state exactly what is missing
+- record open questions instead of inventing certainty
+- do not proceed without confirmation
+- report partial write failures
+- summarize applied writes after execution
+- state what was not applied when a partial write fails
+
+## Terminal State Rules
+
+- `completed_with_deferrals` requires listing deferred items before the skill ends
+
 ## Reusable Commands
 
 - `resolve-story-input`
