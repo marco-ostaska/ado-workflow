@@ -155,3 +155,17 @@ def test_parent_story_update_template_has_required_sections():
     ]
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     assert lines == sections
+
+
+def test_progress_sync_ado_change_package_template_has_required_sections():
+    text = Path("skills/progress-sync/templates/ado-change-package.md").read_text()
+    sections = [
+        "## Pending ADO Change Package",
+        "Target Story:",
+        "Mapped Child Tasks:",
+        "Child-Task Writes Requiring Confirmation:",
+        "Parent-Story Write Requiring Confirmation:",
+        "Deferred Items:",
+    ]
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    assert lines == sections
