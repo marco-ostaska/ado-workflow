@@ -150,7 +150,8 @@ def test_parent_story_update_template_has_required_sections():
         "Automated Testing Summary:",
         "Manual Or E2E Testing Summary:",
         "Task Coverage Summary:",
+        "Story Status Or Parent-Story Impact:",
         "Remaining Risks Or Open Items:",
     ]
-    for section in sections:
-        assert section in text
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    assert lines == sections
