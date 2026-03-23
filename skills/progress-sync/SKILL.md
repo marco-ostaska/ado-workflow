@@ -35,7 +35,7 @@ The skill must track:
 - work-to-task mapping draft
 - open questions
 - unsatisfied completion gates
-- pending ADO write proposal
+- pending ADO write proposal for the pending ADO change package
 - terminal skill state
 
 ## Flow
