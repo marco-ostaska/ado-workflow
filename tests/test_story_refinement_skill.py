@@ -117,3 +117,18 @@ def test_ado_change_package_template_has_required_sections():
         "Pending Writes Requiring Confirmation:",
     ]:
         assert field in text
+
+
+def test_progress_sync_handoff_template_has_required_sections():
+    text = Path("skills/story-refinement/templates/progress-sync-handoff.md").read_text()
+    for field in [
+        "## Progress Sync Handoff",
+        "Target Story:",
+        "Repository Scope:",
+        "Final Task Structure:",
+        "Intended Scope Of Each Task:",
+        "Deferred Items:",
+        "Unresolved Planning Gaps:",
+        "Next Step: `progress-sync`",
+    ]:
+        assert field in text
