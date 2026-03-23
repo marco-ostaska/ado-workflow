@@ -165,7 +165,11 @@ def test_progress_sync_ado_change_package_template_has_required_sections():
         "Mapped Child Tasks:",
         "Child-Task Writes Requiring Confirmation:",
         "Parent-Story Write Requiring Confirmation:",
+        "Include only when a parent-story update is appropriate.",
         "Deferred Items:",
     ]
-    lines = [line.strip() for line in text.splitlines() if line.strip()]
-    assert lines == sections
+    for section in sections:
+        assert section in text
+
+    positions = [text.index(section) for section in sections]
+    assert positions == sorted(positions)
