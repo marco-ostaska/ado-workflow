@@ -1,5 +1,7 @@
 ## Story Triage List
 
+Use this triage list before selecting the target story.
+
 Selection Options:
 - present all candidate stories first
 - let the user choose the target story

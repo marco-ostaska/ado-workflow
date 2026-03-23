@@ -91,13 +91,13 @@ def test_story_intake_skill_handles_compliance_and_failure_paths():
         "prepare minimum compliance tasks",
         "show the proposal before writing",
         "apply only after user confirmation",
-        "allow explicit deferral",
+        "allow deferred items",
         "stop as `blocked` when required ADO data is missing and state exactly what is missing",
         "when story understanding is ambiguous, record open questions instead of inventing certainty",
         "do not proceed without confirmation",
         "report partial write failures",
         "summarize applied writes after execution",
-        "completed_with_deferrals requires listing deferred items before the skill ends",
+        "`completed_with_deferrals` requires listing deferred items before the skill ends",
     ]
     for item in required_items:
         assert item in text

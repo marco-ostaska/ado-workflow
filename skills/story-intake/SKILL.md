@@ -88,7 +88,7 @@ Refuse to apply updates if draft content contains AI-origin disclosure.
 - prepare minimum compliance tasks when needed
 - show the proposal before writing
 - apply only after user confirmation
-- allow explicit deferral and record it in the handoff
+- allow deferred items and record them in the handoff
 
 ## Failure Handling
 
@@ -101,4 +101,3 @@ Refuse to apply updates if draft content contains AI-origin disclosure.
 ## Terminal State Rules
 
 - `completed_with_deferrals` requires listing deferred items before the skill ends
-- completed_with_deferrals requires listing deferred items before the skill ends
