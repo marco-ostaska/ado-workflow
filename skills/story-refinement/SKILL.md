@@ -91,6 +91,7 @@ normalize ADO drafts to natural professional English before apply
 - stop as `blocked` when required ADO data is missing and state exactly what is missing
 - record open questions instead of inventing certainty
 - do not proceed without confirmation
+- treat confirmation as mandatory for ADO writes and status changes, not for read-only analysis
 - report partial write failures
 - summarize applied writes after execution
 - state what was not applied when a partial write fails
