@@ -36,3 +36,20 @@ def test_story_refinement_skill_requires_full_flow_before_completion():
     ]
     for item in required_items:
         assert item in text
+
+
+def test_story_refinement_skill_declares_required_runtime_state():
+    text = Path("skills/story-refinement/SKILL.md").read_text()
+    assert "## Runtime State" in text
+    required_state = [
+        "target story identifier",
+        "condensed story snapshot",
+        "child task snapshot",
+        "repository scope provided by the user",
+        "open questions",
+        "unsatisfied completion gates",
+        "pending ADO write proposal",
+        "terminal skill state",
+    ]
+    for item in required_state:
+        assert item in text

@@ -22,6 +22,18 @@ Take a selected story plus user-provided repositories, refine the work into an a
 - pending ADO change package
 - progress-sync handoff
 
+## Runtime State
+
+The skill must track:
+- target story identifier
+- condensed story snapshot
+- child task snapshot
+- repository scope provided by the user
+- open questions
+- unsatisfied completion gates
+- pending ADO write proposal
+- terminal skill state
+
 ## Completion Gate
 
 - target story identified
