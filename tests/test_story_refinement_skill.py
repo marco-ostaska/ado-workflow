@@ -92,3 +92,16 @@ def test_story_refinement_skill_enforces_ado_rules_and_revision_safeguards():
     ]
     for rule in required_rules:
         assert rule in text
+
+
+def test_execution_plan_template_has_required_sections():
+    text = Path("skills/story-refinement/templates/execution-plan.md").read_text()
+    for field in [
+        "## Refined Execution Plan",
+        "Target Story:",
+        "Repository Scope:",
+        "Refined Understanding:",
+        "Execution Plan:",
+        "Open Questions:",
+    ]:
+        assert field in text
