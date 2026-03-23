@@ -71,6 +71,18 @@ def test_story_intake_skill_declares_reusable_commands_and_single_write_command(
         assert item in text
 
 
+def test_story_intake_skill_enforces_ado_language_and_discretion_rules():
+    text = Path("skills/story-intake/SKILL.md").read_text()
+    required_rules = [
+        "All content written to Azure DevOps must be in English.",
+        "Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.",
+        "Refuse to apply updates if draft content is not English.",
+        "Refuse to apply updates if draft content contains AI-origin disclosure.",
+    ]
+    for rule in required_rules:
+        assert rule in text
+
+
 def test_story_triage_template_has_required_list_fields():
     text = Path("skills/story-intake/templates/story-triage.md").read_text()
     for field in [
