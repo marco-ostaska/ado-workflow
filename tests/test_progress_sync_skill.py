@@ -127,10 +127,15 @@ def test_child_task_updates_template_has_required_sections():
     sections = [
         "## Child Task Updates",
         "Target Story:",
+        "Target Child Tasks:",
         "Task Updates:",
+        "Child-Task Comment Drafts:",
         "Proposed Status Changes:",
         "Reported Automated Test Evidence:",
         "Reported Manual Or E2E Test Evidence:",
     ]
-    lines = [line.strip() for line in text.splitlines() if line.strip()]
-    assert lines == sections
+    for section in sections:
+        assert section in text
+
+    positions = [text.index(section) for section in sections]
+    assert positions == sorted(positions)
