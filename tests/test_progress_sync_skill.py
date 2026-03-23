@@ -61,3 +61,22 @@ def test_progress_sync_skill_declares_required_runtime_state():
     ]
     for item in required_state:
         assert item in text
+
+
+def test_progress_sync_skill_declares_commands_and_mapping_rules():
+    text = Path("skills/progress-sync/SKILL.md").read_text()
+    required_items = [
+        "## Reusable Commands",
+        "resolve-story-input",
+        "fetch-story-details",
+        "fetch-child-tasks",
+        "draft-progress-update",
+        "draft-parent-story-update",
+        "apply-ado-updates",
+        "Only `apply-ado-updates` may write to ADO.",
+        "All `draft_*` commands are read/analysis/drafting steps only.",
+        "Do not invent progress that the user did not report.",
+        "Do not remap reported work to unrelated tasks without evidence.",
+    ]
+    for item in required_items:
+        assert item in text
