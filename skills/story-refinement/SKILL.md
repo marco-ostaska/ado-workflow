@@ -72,3 +72,17 @@ draft first
 require confirmation before apply
 All content written to Azure DevOps must be in English.
 Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.
+
+## Reusable Commands
+
+- `resolve-story-input`
+- `fetch-story-details`
+- `fetch-child-tasks`
+- `summarize-story-intent`
+- `detect-open-questions`
+- `draft-task-revision`
+- `apply-ado-updates`
+
+Only `apply-ado-updates` may write to ADO.
+All `draft_*` commands are read/analysis/drafting steps only.
+Do not perform broad repository discovery without user input.

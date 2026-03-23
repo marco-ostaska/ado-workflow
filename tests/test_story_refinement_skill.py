@@ -53,3 +53,22 @@ def test_story_refinement_skill_declares_required_runtime_state():
     ]
     for item in required_state:
         assert item in text
+
+
+def test_story_refinement_skill_declares_commands_and_user_repo_scope():
+    text = Path("skills/story-refinement/SKILL.md").read_text()
+    required_items = [
+        "## Reusable Commands",
+        "resolve-story-input",
+        "fetch-story-details",
+        "fetch-child-tasks",
+        "summarize-story-intent",
+        "detect-open-questions",
+        "draft-task-revision",
+        "apply-ado-updates",
+        "Only `apply-ado-updates` may write to ADO.",
+        "All `draft_*` commands are read/analysis/drafting steps only.",
+        "Do not perform broad repository discovery without user input.",
+    ]
+    for item in required_items:
+        assert item in text
