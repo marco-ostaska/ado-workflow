@@ -108,13 +108,18 @@ def test_progress_sync_skill_enforces_ado_rules_and_test_reporting_safeguards():
 
 def test_work_to_task_mapping_template_has_required_sections():
     text = Path("skills/progress-sync/templates/work-to-task-mapping.md").read_text()
-    for section in [
+    sections = [
         "## Work To Task Mapping",
         "Target Story:",
         "Reported Implementation Work:",
         "Reported Automated Tests:",
         "Reported Manual Or E2E Tests:",
         "Mapped Child Tasks:",
+        "Story-Level Coverage Or Parent-Story Impact:",
         "Open Questions Or Ambiguous Items:",
-    ]:
+    ]
+    for section in sections:
         assert section in text
+
+    positions = [text.index(section) for section in sections]
+    assert positions == sorted(positions)
