@@ -104,3 +104,17 @@ def test_progress_sync_skill_enforces_ado_rules_and_test_reporting_safeguards():
     ]
     for item in required_items:
         assert item in text
+
+
+def test_work_to_task_mapping_template_has_required_sections():
+    text = Path("skills/progress-sync/templates/work-to-task-mapping.md").read_text()
+    for section in [
+        "## Work To Task Mapping",
+        "Target Story:",
+        "Reported Implementation Work:",
+        "Reported Automated Tests:",
+        "Reported Manual Or E2E Tests:",
+        "Mapped Child Tasks:",
+        "Open Questions Or Ambiguous Items:",
+    ]:
+        assert section in text
