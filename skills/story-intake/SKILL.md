@@ -81,3 +81,23 @@ All content written to Azure DevOps must be in English.
 Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.
 Refuse to apply updates if draft content is not English.
 Refuse to apply updates if draft content contains AI-origin disclosure.
+
+## Compliance Handling
+
+- prepare minimum compliance tasks when needed
+- show the proposal before writing
+- apply only after user confirmation
+- allow explicit deferral and record it in the handoff
+
+## Failure Handling
+
+- stop as `blocked` when required ADO data is missing and state exactly what is missing
+- when story understanding is ambiguous, record open questions instead of inventing certainty
+- do not proceed without confirmation
+- report partial write failures
+- summarize applied writes after execution
+
+## Terminal State Rules
+
+- `completed_with_deferrals` requires listing deferred items before the skill ends
+- completed_with_deferrals requires listing deferred items before the skill ends

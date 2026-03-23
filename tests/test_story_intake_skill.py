@@ -85,6 +85,24 @@ def test_story_intake_skill_enforces_ado_language_and_discretion_rules():
         assert rule in text
 
 
+def test_story_intake_skill_handles_compliance_and_failure_paths():
+    text = Path("skills/story-intake/SKILL.md").read_text()
+    required_items = [
+        "prepare minimum compliance tasks",
+        "show the proposal before writing",
+        "apply only after user confirmation",
+        "allow explicit deferral",
+        "stop as `blocked` when required ADO data is missing and state exactly what is missing",
+        "when story understanding is ambiguous, record open questions instead of inventing certainty",
+        "do not proceed without confirmation",
+        "report partial write failures",
+        "summarize applied writes after execution",
+        "completed_with_deferrals requires listing deferred items before the skill ends",
+    ]
+    for item in required_items:
+        assert item in text
+
+
 def test_story_triage_template_has_required_list_fields():
     text = Path("skills/story-intake/templates/story-triage.md").read_text()
     for field in [
