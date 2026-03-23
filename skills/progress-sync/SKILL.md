@@ -23,6 +23,28 @@ Convert reported implementation and testing progress into actionable Azure DevOp
 - pending ADO change package
 - completion-closeout handoff
 
+## Flow
+
+1. confirm the target story and/or child task context
+2. allow the skill to run in isolation when the user provides enough context
+3. review the current story and child tasks
+4. clarify the reported implementation and testing work
+5. map the reported work to the correct tasks and/or story
+6. draft child-task comments and candidate status changes
+7. draft a consolidated parent-story update when appropriate
+8. prepare the pending ADO change package before any write
+9. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
+10. produce a completion-closeout handoff
+11. stop after producing the completion-closeout handoff
+12. check completion gates before ending
+
+## Terminal States
+
+- completed
+- completed_with_deferrals
+- blocked
+- cancelled
+
 ## Completion Gate
 
 - target story or child tasks identified
