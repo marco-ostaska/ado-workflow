@@ -83,7 +83,9 @@ Refuse to apply updates if draft content contains AI-origin disclosure.
 normalize ADO drafts to natural professional English before apply
 show child-task update drafts before writing
 show the parent-story update draft before writing
+show the parent-story update draft before writing only when a parent-story update is appropriate
 show the pending ADO change package before writing
+if normalization changes a reviewed draft, show the updated draft again before apply
 
 ## Reporting Safeguards
 
