@@ -59,23 +59,32 @@ All four skills follow the same core safeguards:
 
 ## Install In Claude Code
 
-Claude Code has native skill support. The exact loading mechanism depends on your local Codex/Claude setup, but the practical model is simple: make these skill directories available from your local skill search path, then invoke them by name.
+Recommended target path:
 
-Recommended local approach:
+```text
+~/.claude/skills/ado-workflow/
+```
 
-1. Keep this repository cloned locally.
-2. Expose the repo skill folders to your Claude Code skill path.
-3. Register or symlink the four skill directories from `skills/` into the location Claude Code reads for local skills.
-4. Invoke the skill by name when you want to run that stage.
+Create symlinks from this repository into your Claude Code local skills directory:
 
-Skill source paths:
+```bash
+mkdir -p ~/.claude/skills/ado-workflow
+ln -s /absolute/path/to/ado-workflows/skills/story-intake ~/.claude/skills/ado-workflow/story-intake
+ln -s /absolute/path/to/ado-workflows/skills/story-refinement ~/.claude/skills/ado-workflow/story-refinement
+ln -s /absolute/path/to/ado-workflows/skills/progress-sync ~/.claude/skills/ado-workflow/progress-sync
+ln -s /absolute/path/to/ado-workflows/skills/completion-closeout ~/.claude/skills/ado-workflow/completion-closeout
+```
 
-- `skills/story-intake`
-- `skills/story-refinement`
-- `skills/progress-sync`
-- `skills/completion-closeout`
+Expected result:
 
-Example invocation style:
+```text
+~/.claude/skills/ado-workflow/story-intake/SKILL.md
+~/.claude/skills/ado-workflow/story-refinement/SKILL.md
+~/.claude/skills/ado-workflow/progress-sync/SKILL.md
+~/.claude/skills/ado-workflow/completion-closeout/SKILL.md
+```
+
+Then restart Claude Code if it caches skill discovery, and invoke:
 
 ```text
 $story-intake
@@ -84,36 +93,76 @@ $progress-sync
 $completion-closeout
 ```
 
+If your Claude Code setup uses a different local skills root, keep the same directory shape and place these four skill folders under that root instead.
+
 ## Install In Codex
 
-Codex can work with local skill files when they are placed in a location your Codex environment reads for custom skills or when you copy their contents into your local skill catalog.
+Recommended target path:
 
-Recommended local approach:
+```text
+~/.codex/skills/ado-workflow/
+```
 
-1. Keep this repository cloned locally.
-2. Copy or symlink each skill directory from `skills/` into your Codex local skills location.
-3. Restart the Codex session if your environment caches skill discovery.
-4. Invoke the skill you need by name.
+Create symlinks from this repository into your Codex local skills directory:
 
-If your Codex environment does not auto-discover local skills, use the `SKILL.md` files in this repository as the canonical source when creating those local entries.
+```bash
+mkdir -p ~/.codex/skills/ado-workflow
+ln -s /absolute/path/to/ado-workflows/skills/story-intake ~/.codex/skills/ado-workflow/story-intake
+ln -s /absolute/path/to/ado-workflows/skills/story-refinement ~/.codex/skills/ado-workflow/story-refinement
+ln -s /absolute/path/to/ado-workflows/skills/progress-sync ~/.codex/skills/ado-workflow/progress-sync
+ln -s /absolute/path/to/ado-workflows/skills/completion-closeout ~/.codex/skills/ado-workflow/completion-closeout
+```
+
+Expected result:
+
+```text
+~/.codex/skills/ado-workflow/story-intake/SKILL.md
+~/.codex/skills/ado-workflow/story-refinement/SKILL.md
+~/.codex/skills/ado-workflow/progress-sync/SKILL.md
+~/.codex/skills/ado-workflow/completion-closeout/SKILL.md
+```
+
+Then restart the Codex session if needed and invoke the skill by name.
+
+If your Codex environment uses another local skills root, keep the same directory shape and place the four skill folders there.
 
 ## Install In Copilot CLI
 
-Copilot CLI does not have a universal native skill format equivalent to Claude Code skills, so the practical path is to reuse these files as local prompt assets.
+Copilot CLI does not share the same native skill loader model, so the practical approach is to install these as local prompt assets.
 
-Recommended local approach:
+Recommended target path:
 
-1. Keep this repository cloned locally.
-2. Treat each `SKILL.md` file as the stage contract for a reusable prompt or command in your Copilot CLI workflow.
-3. Copy the relevant `SKILL.md` content into your local prompt library, wrapper script, or command template.
-4. Keep the template files alongside the prompt so the workflow outputs stay consistent.
+```text
+~/.config/copilot/prompts/ado-workflow/
+```
 
-Suggested mapping:
+Copy the skill files into a local prompt directory:
+
+```bash
+mkdir -p ~/.config/copilot/prompts/ado-workflow
+cp /absolute/path/to/ado-workflows/skills/story-intake/SKILL.md ~/.config/copilot/prompts/ado-workflow/story-intake.md
+cp /absolute/path/to/ado-workflows/skills/story-refinement/SKILL.md ~/.config/copilot/prompts/ado-workflow/story-refinement.md
+cp /absolute/path/to/ado-workflows/skills/progress-sync/SKILL.md ~/.config/copilot/prompts/ado-workflow/progress-sync.md
+cp /absolute/path/to/ado-workflows/skills/completion-closeout/SKILL.md ~/.config/copilot/prompts/ado-workflow/completion-closeout.md
+```
+
+Expected result:
+
+```text
+~/.config/copilot/prompts/ado-workflow/story-intake.md
+~/.config/copilot/prompts/ado-workflow/story-refinement.md
+~/.config/copilot/prompts/ado-workflow/progress-sync.md
+~/.config/copilot/prompts/ado-workflow/completion-closeout.md
+```
+
+Suggested mapping inside your Copilot CLI workflow:
 
 - `skills/story-intake/SKILL.md` -> intake prompt
 - `skills/story-refinement/SKILL.md` -> refinement prompt
 - `skills/progress-sync/SKILL.md` -> progress sync prompt
 - `skills/completion-closeout/SKILL.md` -> closeout prompt
+
+If your Copilot CLI setup uses a different prompt directory, keep the same file naming and adjust the destination path.
 
 ## Recommended Usage Flow
 
