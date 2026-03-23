@@ -56,7 +56,7 @@ def test_progress_sync_skill_declares_required_runtime_state():
         "work-to-task mapping draft",
         "open questions",
         "unsatisfied completion gates",
-        "pending ADO write proposal",
+        "pending ADO write proposal for the pending ADO change package",
         "terminal skill state",
     ]
     for item in required_state:
