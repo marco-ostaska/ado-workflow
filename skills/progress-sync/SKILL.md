@@ -11,15 +11,15 @@ Convert reported implementation and testing progress into actionable Azure DevOp
 
 ## Inputs
 
-- target story or child tasks identified by the user
-- implementation and testing report
-- current work-to-task mapping
+- target story and/or child tasks
+- reported implementation work
+- reported automated and/or manual tests
 
 ## Required Outputs
 
 - work-to-task mapping
 - child-task update draft
-- parent-story update draft
+- parent-story update draft when the reported progress affects overall story status or multi-task coverage
 - pending ADO change package
 - completion-closeout handoff
 
