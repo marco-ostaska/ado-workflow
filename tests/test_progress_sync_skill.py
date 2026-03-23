@@ -41,3 +41,23 @@ def test_progress_sync_skill_requires_full_flow_before_completion():
     assert text.index("check completion gates before ending") < text.index(
         "stop after producing the completion-closeout handoff"
     )
+
+
+def test_progress_sync_skill_declares_required_runtime_state():
+    text = Path("skills/progress-sync/SKILL.md").read_text()
+    assert "## Runtime State" in text
+    required_state = [
+        "target story identifier",
+        "target child task identifiers",
+        "condensed story snapshot",
+        "child task snapshot",
+        "reported implementation summary",
+        "reported testing summary",
+        "work-to-task mapping draft",
+        "open questions",
+        "unsatisfied completion gates",
+        "pending ADO write proposal",
+        "terminal skill state",
+    ]
+    for item in required_state:
+        assert item in text

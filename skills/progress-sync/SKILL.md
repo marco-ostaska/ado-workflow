@@ -23,6 +23,21 @@ Convert reported implementation and testing progress into actionable Azure DevOp
 - pending ADO change package
 - completion-closeout handoff
 
+## Runtime State
+
+The skill must track:
+- target story identifier
+- target child task identifiers
+- condensed story snapshot
+- child task snapshot
+- reported implementation summary
+- reported testing summary
+- work-to-task mapping draft
+- open questions
+- unsatisfied completion gates
+- pending ADO write proposal
+- terminal skill state
+
 ## Flow
 
 1. confirm the target story and/or child task context
