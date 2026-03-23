@@ -16,6 +16,8 @@ def test_story_refinement_skill_has_required_sections():
 def test_story_refinement_skill_requires_full_flow_before_completion():
     text = Path("skills/story-refinement/SKILL.md").read_text()
     required_items = [
+        "## Flow",
+        "## Terminal States",
         "confirm the target story context",
         "allow the skill to run in isolation when the user provides enough context",
         "require repositories explicitly provided by the user",
