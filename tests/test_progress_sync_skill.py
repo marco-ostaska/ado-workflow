@@ -139,3 +139,18 @@ def test_child_task_updates_template_has_required_sections():
 
     positions = [text.index(section) for section in sections]
     assert positions == sorted(positions)
+
+
+def test_parent_story_update_template_has_required_sections():
+    text = Path("skills/progress-sync/templates/parent-story-update.md").read_text()
+    sections = [
+        "## Parent Story Update",
+        "Target Story:",
+        "Implementation Summary:",
+        "Automated Testing Summary:",
+        "Manual Or E2E Testing Summary:",
+        "Task Coverage Summary:",
+        "Remaining Risks Or Open Items:",
+    ]
+    for section in sections:
+        assert section in text
