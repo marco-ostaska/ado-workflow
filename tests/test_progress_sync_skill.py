@@ -138,6 +138,23 @@ def test_completion_closeout_handoff_template_has_required_sections():
     assert lines == sections
 
 
+def test_progress_sync_skill_handles_failure_and_blocked_paths():
+    text = Path("skills/progress-sync/SKILL.md").read_text()
+    required_items = [
+        "stop as `blocked` when the target story and child tasks are missing or inaccessible",
+        "stop as `blocked` when the implementation report is too incomplete to map safely",
+        "stop as `blocked` when required ADO data is missing and state exactly what is missing",
+        "record open questions instead of inventing certainty",
+        "do not proceed without confirmation",
+        "report partial write failures",
+        "summarize applied writes after execution",
+        "state what was not applied when a partial write fails",
+        "`completed_with_deferrals` requires listing deferred items before the skill ends",
+    ]
+    for item in required_items:
+        assert item in text
+
+
 def test_child_task_updates_template_has_required_sections():
     text = Path("skills/progress-sync/templates/child-task-updates.md").read_text()
     sections = [
@@ -189,3 +206,31 @@ def test_progress_sync_ado_change_package_template_has_required_sections():
 
     positions = [text.index(section) for section in sections]
     assert positions == sorted(positions)
+
+
+def test_progress_sync_assets_match_the_design_contract():
+    skill_text = Path("skills/progress-sync/SKILL.md").read_text()
+    mapping_text = Path("skills/progress-sync/templates/work-to-task-mapping.md").read_text()
+    child_text = Path("skills/progress-sync/templates/child-task-updates.md").read_text()
+    parent_text = Path("skills/progress-sync/templates/parent-story-update.md").read_text()
+    package_text = Path("skills/progress-sync/templates/ado-change-package.md").read_text()
+    handoff_text = Path(
+        "skills/progress-sync/templates/completion-closeout-handoff.md"
+    ).read_text()
+
+    assert "work-to-task mapping" in skill_text
+    assert "draft child-task comments and candidate status changes" in skill_text
+    assert "draft a consolidated parent-story update when appropriate" in skill_text
+    assert "produce a completion-closeout handoff" in skill_text
+    assert "check completion gates before ending" in skill_text
+    assert "## Work To Task Mapping" in mapping_text
+    assert "Mapped Child Tasks:" in mapping_text
+    assert "## Child Task Updates" in child_text
+    assert "Proposed Status Changes:" in child_text
+    assert "## Parent Story Update" in parent_text
+    assert "Task Coverage Summary:" in parent_text
+    assert "## Pending ADO Change Package" in package_text
+    assert "Child-Task Writes Requiring Confirmation:" in package_text
+    assert "## Completion Closeout Handoff" in handoff_text
+    assert "Current Story And Task Status:" in handoff_text
+    assert "Next Step: `completion-closeout`" in handoff_text

@@ -93,6 +93,22 @@ report automated and manual test outcomes separately when both exist
 do not claim tests were run when the user did not report them
 allow deferred items and record them before the skill ends
 
+## Failure Handling
+
+- stop as `blocked` when the target story and child tasks are missing or inaccessible
+- stop as `blocked` when the implementation report is too incomplete to map safely
+- stop as `blocked` when required ADO data is missing and state exactly what is missing
+- record open questions instead of inventing certainty
+- do not proceed without confirmation
+- treat confirmation as mandatory for ADO writes and status changes, not for read-only analysis
+- report partial write failures
+- summarize applied writes after execution
+- state what was not applied when a partial write fails
+
+## Terminal State Rules
+
+- `completed_with_deferrals` requires listing deferred items before the skill ends
+
 ## Reusable Commands
 
 - `resolve-story-input`
