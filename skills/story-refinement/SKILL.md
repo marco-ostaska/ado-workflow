@@ -81,7 +81,6 @@ normalize ADO drafts to natural professional English before apply
 - show the task revision proposal before writing
 - replace or revise compliance-only tasks so they match the real work
 - show the pending ADO change package before writing
-- apply only after user confirmation
 - allow deferred items and record them in the handoff
 
 ## Reusable Commands
