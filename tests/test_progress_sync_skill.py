@@ -97,7 +97,9 @@ def test_progress_sync_skill_enforces_ado_rules_and_test_reporting_safeguards():
         "do not claim tests were run when the user did not report them",
         "show child-task update drafts before writing",
         "show the parent-story update draft before writing",
+        "show the parent-story update draft before writing only when a parent-story update is appropriate",
         "show the pending ADO change package before writing",
+        "if normalization changes a reviewed draft, show the updated draft again before apply",
         "allow deferred items and record them before the skill ends",
     ]
     for item in required_items:
