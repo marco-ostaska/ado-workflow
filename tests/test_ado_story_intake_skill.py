@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 def test_story_intake_skill_has_required_sections():
-    text = Path("skills/story-intake/SKILL.md").read_text()
+    text = Path("skills/ado-story-intake/SKILL.md").read_text()
     for section in [
         "## Purpose",
         "## Entry Modes",
@@ -14,7 +14,7 @@ def test_story_intake_skill_has_required_sections():
 
 
 def test_story_intake_skill_requires_full_flow_before_completion():
-    text = Path("skills/story-intake/SKILL.md").read_text()
+    text = Path("skills/ado-story-intake/SKILL.md").read_text()
     required_items = [
         "## Flow",
         "## Terminal States",
@@ -37,7 +37,7 @@ def test_story_intake_skill_requires_full_flow_before_completion():
 
 
 def test_story_intake_skill_declares_required_runtime_state():
-    text = Path("skills/story-intake/SKILL.md").read_text()
+    text = Path("skills/ado-story-intake/SKILL.md").read_text()
     assert "## Runtime State" in text
     required_state = [
         "target story identifier",
@@ -53,7 +53,7 @@ def test_story_intake_skill_declares_required_runtime_state():
 
 
 def test_story_intake_skill_declares_reusable_commands_and_single_write_command():
-    text = Path("skills/story-intake/SKILL.md").read_text()
+    text = Path("skills/ado-story-intake/SKILL.md").read_text()
     required_items = [
         "## Reusable Commands",
         "resolve-story-input",
@@ -72,7 +72,7 @@ def test_story_intake_skill_declares_reusable_commands_and_single_write_command(
 
 
 def test_story_intake_skill_enforces_ado_language_and_discretion_rules():
-    text = Path("skills/story-intake/SKILL.md").read_text()
+    text = Path("skills/ado-story-intake/SKILL.md").read_text()
     required_rules = [
         "draft first",
         "require confirmation before apply",
@@ -86,7 +86,7 @@ def test_story_intake_skill_enforces_ado_language_and_discretion_rules():
 
 
 def test_story_intake_skill_handles_compliance_and_failure_paths():
-    text = Path("skills/story-intake/SKILL.md").read_text()
+    text = Path("skills/ado-story-intake/SKILL.md").read_text()
     required_items = [
         "prepare minimum compliance tasks",
         "show the proposal before writing",
@@ -104,7 +104,7 @@ def test_story_intake_skill_handles_compliance_and_failure_paths():
 
 
 def test_story_triage_template_has_required_list_fields():
-    text = Path("skills/story-intake/templates/story-triage.md").read_text()
+    text = Path("skills/ado-story-intake/templates/story-triage.md").read_text()
     for field in [
         "## Story Triage List",
         "Selection Options:",
@@ -115,7 +115,7 @@ def test_story_triage_template_has_required_list_fields():
 
 
 def test_refinement_handoff_template_has_required_sections():
-    text = Path("skills/story-intake/templates/refinement-handoff.md").read_text()
+    text = Path("skills/ado-story-intake/templates/refinement-handoff.md").read_text()
     for field in [
         "Target Story:",
         "Story Overview:",
@@ -128,9 +128,9 @@ def test_refinement_handoff_template_has_required_sections():
 
 
 def test_story_intake_assets_match_the_design_contract():
-    skill_text = Path("skills/story-intake/SKILL.md").read_text()
-    triage_text = Path("skills/story-intake/templates/story-triage.md").read_text()
-    handoff_text = Path("skills/story-intake/templates/refinement-handoff.md").read_text()
+    skill_text = Path("skills/ado-story-intake/SKILL.md").read_text()
+    triage_text = Path("skills/ado-story-intake/templates/story-triage.md").read_text()
+    handoff_text = Path("skills/ado-story-intake/templates/refinement-handoff.md").read_text()
 
     assert "story triage list" in skill_text
     assert "stop after producing the refinement handoff" in skill_text
@@ -140,4 +140,4 @@ def test_story_intake_assets_match_the_design_contract():
     assert "Story ID | Title | Description | Existing Tasks | Overview | Open Questions | Compliance Status" in triage_text
     assert "Choose a target story before any write action." in triage_text
     assert "Target Story:" in handoff_text
-    assert "Next Step: `story-refinement`" in handoff_text
+    assert "Next Step: `ado-story-refinement`" in handoff_text

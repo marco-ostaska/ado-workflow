@@ -1,5 +1,5 @@
 ---
-name: story-intake
+name: ado-story-intake
 description: Intake Azure DevOps stories, assess minimum compliance, and prepare a refinement handoff
 ---
 

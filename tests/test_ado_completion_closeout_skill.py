@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 def test_completion_closeout_skill_has_required_sections():
-    text = Path("skills/completion-closeout/SKILL.md").read_text()
+    text = Path("skills/ado-completion-closeout/SKILL.md").read_text()
     for section in [
         "## Purpose",
         "## Inputs",
@@ -14,7 +14,7 @@ def test_completion_closeout_skill_has_required_sections():
 
 
 def test_completion_closeout_skill_requires_full_flow_before_completion():
-    text = Path("skills/completion-closeout/SKILL.md").read_text()
+    text = Path("skills/ado-completion-closeout/SKILL.md").read_text()
     required_items = [
         "confirm the target story context",
         "allow the skill to run in isolation when the user provides enough context",
@@ -38,7 +38,7 @@ def test_completion_closeout_skill_requires_full_flow_before_completion():
 
 
 def test_completion_closeout_skill_declares_required_runtime_state():
-    text = Path("skills/completion-closeout/SKILL.md").read_text()
+    text = Path("skills/ado-completion-closeout/SKILL.md").read_text()
     assert "## Runtime State" in text
     required_state = [
         "target story identifier",
@@ -58,7 +58,7 @@ def test_completion_closeout_skill_declares_required_runtime_state():
 
 
 def test_completion_closeout_skill_declares_commands_and_closeout_rules():
-    text = Path("skills/completion-closeout/SKILL.md").read_text()
+    text = Path("skills/ado-completion-closeout/SKILL.md").read_text()
     required_items = [
         "## Reusable Commands",
         "resolve-story-input",
@@ -71,18 +71,21 @@ def test_completion_closeout_skill_declares_commands_and_closeout_rules():
         "All `draft_*` commands are read/analysis/drafting steps only.",
         "Do not invent PR, testing, or readiness evidence that the user did not report.",
         "Do not close tasks or the story while blockers remain unresolved.",
+        "Do not draft a final closeout package without resolution notes for the parent story and each closing child task.",
     ]
     for item in required_items:
         assert item in text
 
 
 def test_completion_closeout_skill_enforces_safeguards_and_failure_paths():
-    text = Path("skills/completion-closeout/SKILL.md").read_text()
+    text = Path("skills/ado-completion-closeout/SKILL.md").read_text()
     required_items = [
         "Refuse to apply updates if draft content is not English.",
         "Refuse to apply updates if draft content contains AI-origin disclosure.",
         "normalize ADO drafts to natural professional English before apply",
         "show the final closeout package before writing",
+        "include an English resolution note for every child task being closed",
+        "include an English resolution note for the parent story being closed",
         "stop as `blocked` when the target story or child-task data is missing or inaccessible",
         "stop as `blocked` when closeout evidence is too incomplete to evaluate safely",
         "stop as `blocked` when required ADO data is missing and state exactly what is missing",
@@ -98,7 +101,7 @@ def test_completion_closeout_skill_enforces_safeguards_and_failure_paths():
 
 def test_closeout_readiness_checklist_template_has_required_sections():
     text = Path(
-        "skills/completion-closeout/templates/closeout-readiness-checklist.md"
+        "skills/ado-completion-closeout/templates/closeout-readiness-checklist.md"
     ).read_text()
     sections = [
         "## Closeout Readiness Checklist",
@@ -116,7 +119,7 @@ def test_closeout_readiness_checklist_template_has_required_sections():
 
 
 def test_closeout_blockers_template_has_required_sections():
-    text = Path("skills/completion-closeout/templates/closeout-blockers.md").read_text()
+    text = Path("skills/ado-completion-closeout/templates/closeout-blockers.md").read_text()
     sections = [
         "## Closeout Blockers",
         "Target Story:",
@@ -131,13 +134,15 @@ def test_closeout_blockers_template_has_required_sections():
 
 def test_final_closeout_package_template_has_required_sections():
     text = Path(
-        "skills/completion-closeout/templates/final-closeout-package.md"
+        "skills/ado-completion-closeout/templates/final-closeout-package.md"
     ).read_text()
     sections = [
         "## Final Closeout Package",
         "Target Story:",
         "Child-Task Closeout Writes Requiring Confirmation:",
+        "Child-Task Resolution Notes:",
         "Parent-Story Closeout Write Requiring Confirmation:",
+        "Parent-Story Resolution Note:",
         "Closeout Summary For ADO:",
         "Deferred Items:",
     ]
@@ -146,15 +151,15 @@ def test_final_closeout_package_template_has_required_sections():
 
 
 def test_completion_closeout_assets_match_the_design_contract():
-    skill_text = Path("skills/completion-closeout/SKILL.md").read_text()
+    skill_text = Path("skills/ado-completion-closeout/SKILL.md").read_text()
     readiness_text = Path(
-        "skills/completion-closeout/templates/closeout-readiness-checklist.md"
+        "skills/ado-completion-closeout/templates/closeout-readiness-checklist.md"
     ).read_text()
     blockers_text = Path(
-        "skills/completion-closeout/templates/closeout-blockers.md"
+        "skills/ado-completion-closeout/templates/closeout-blockers.md"
     ).read_text()
     package_text = Path(
-        "skills/completion-closeout/templates/final-closeout-package.md"
+        "skills/ado-completion-closeout/templates/final-closeout-package.md"
     ).read_text()
 
     assert "closeout readiness checklist" in skill_text
@@ -162,10 +167,14 @@ def test_completion_closeout_assets_match_the_design_contract():
     assert "final closeout package" in skill_text
     assert "evaluate whether closeout is safe" in skill_text
     assert "check completion gates before ending" in skill_text
+    assert "include an English resolution note for every child task being closed" in skill_text
+    assert "include an English resolution note for the parent story being closed" in skill_text
     assert "## Closeout Readiness Checklist" in readiness_text
     assert "Closeout Decision:" in readiness_text
     assert "## Closeout Blockers" in blockers_text
     assert "Blockers Preventing Safe Closeout:" in blockers_text
     assert "## Final Closeout Package" in package_text
     assert "Child-Task Closeout Writes Requiring Confirmation:" in package_text
+    assert "Child-Task Resolution Notes:" in package_text
     assert "Parent-Story Closeout Write Requiring Confirmation:" in package_text
+    assert "Parent-Story Resolution Note:" in package_text

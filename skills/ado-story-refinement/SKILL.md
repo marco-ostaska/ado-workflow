@@ -1,6 +1,6 @@
 ---
-name: story-refinement
-description: Refine an Azure DevOps story into an execution plan, task revision draft, and progress-sync handoff
+name: ado-story-refinement
+description: Refine an Azure DevOps story into an execution plan, task revision draft, and ado-progress-sync handoff
 ---
 
 # Story Refinement
@@ -20,7 +20,7 @@ Take a selected story plus user-provided repositories, refine the work into an a
 - concise technical execution plan
 - task revision draft
 - pending ADO change package
-- progress-sync handoff
+- ado-progress-sync handoff
 
 ## Runtime State
 
@@ -56,8 +56,8 @@ The skill must track:
 6. draft task revisions so the tasks match the real work
 7. prepare the pending ADO change package before any write
 8. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
-9. produce a progress-sync handoff
-10. stop after producing the progress-sync handoff
+9. produce an ado-progress-sync handoff
+10. stop after producing the ado-progress-sync handoff
 
 ## Terminal States
 

@@ -6,4 +6,4 @@ Final Task Structure:
 Intended Scope Of Each Task:
 Deferred Items:
 Unresolved Planning Gaps:
-Next Step: `progress-sync`
+Next Step: `ado-progress-sync`

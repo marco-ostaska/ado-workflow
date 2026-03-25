@@ -1,6 +1,6 @@
 ---
-name: completion-closeout
-description: Validate closure readiness and prepare final Azure DevOps task and story closeout drafts
+name: ado-completion-closeout
+description: Validate closure readiness and prepare final Azure DevOps task and story closeout drafts with required resolution notes
 ---
 
 # Completion Closeout
@@ -77,6 +77,8 @@ Refuse to apply updates if draft content is not English.
 Refuse to apply updates if draft content contains AI-origin disclosure.
 normalize ADO drafts to natural professional English before apply
 show the final closeout package before writing
+include an English resolution note for every child task being closed
+include an English resolution note for the parent story being closed
 
 ## Failure Handling
 
@@ -107,3 +109,4 @@ Only `apply-ado-updates` may write to ADO.
 All `draft_*` commands are read/analysis/drafting steps only.
 Do not invent PR, testing, or readiness evidence that the user did not report.
 Do not close tasks or the story while blockers remain unresolved.
+Do not draft a final closeout package without resolution notes for the parent story and each closing child task.

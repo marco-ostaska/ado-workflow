@@ -1,5 +1,5 @@
 ---
-name: progress-sync
+name: ado-progress-sync
 description: Sync reported implementation and testing progress into mapped Azure DevOps child-task and parent-story update drafts
 ---
 
@@ -21,7 +21,7 @@ Convert reported implementation and testing progress into actionable Azure DevOp
 - child-task update draft
 - parent-story update draft when the reported progress affects overall story status or multi-task coverage
 - pending ADO change package
-- completion-closeout handoff
+- ado-completion-closeout handoff
 
 ## Runtime State
 
@@ -49,9 +49,9 @@ The skill must track:
 7. draft a consolidated parent-story update when appropriate
 8. prepare the pending ADO change package before any write
 9. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
-10. produce a completion-closeout handoff
+10. produce an ado-completion-closeout handoff
 11. check completion gates before ending
-12. stop after producing the completion-closeout handoff
+12. stop after producing the ado-completion-closeout handoff
 
 ## Terminal States
 
@@ -69,7 +69,7 @@ The skill must track:
 - parent-story update draft prepared when appropriate
 - pending ADO change package prepared
 - proposed writes confirmed, applied, or explicitly deferred
-- completion-closeout handoff generated
+- ado-completion-closeout handoff generated
 - check completion gates before ending
 
 ## ADO Write Rules

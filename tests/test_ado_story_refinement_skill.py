@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 def test_story_refinement_skill_has_required_sections():
-    text = Path("skills/story-refinement/SKILL.md").read_text()
+    text = Path("skills/ado-story-refinement/SKILL.md").read_text()
     for section in [
         "## Purpose",
         "## Inputs",
@@ -14,7 +14,7 @@ def test_story_refinement_skill_has_required_sections():
 
 
 def test_story_refinement_skill_requires_full_flow_before_completion():
-    text = Path("skills/story-refinement/SKILL.md").read_text()
+    text = Path("skills/ado-story-refinement/SKILL.md").read_text()
     required_items = [
         "## Flow",
         "## Terminal States",
@@ -26,8 +26,8 @@ def test_story_refinement_skill_requires_full_flow_before_completion():
         "draft task revisions so the tasks match the real work",
         "prepare the pending ADO change package before any write",
         "keep the skill open until proposed writes are confirmed, applied, or explicitly deferred",
-        "produce a progress-sync handoff",
-        "stop after producing the progress-sync handoff",
+        "produce an ado-progress-sync handoff",
+        "stop after producing the ado-progress-sync handoff",
         "check completion gates before ending",
         "completed",
         "completed_with_deferrals",
@@ -39,7 +39,7 @@ def test_story_refinement_skill_requires_full_flow_before_completion():
 
 
 def test_story_refinement_skill_declares_required_runtime_state():
-    text = Path("skills/story-refinement/SKILL.md").read_text()
+    text = Path("skills/ado-story-refinement/SKILL.md").read_text()
     assert "## Runtime State" in text
     required_state = [
         "target story identifier",
@@ -56,7 +56,7 @@ def test_story_refinement_skill_declares_required_runtime_state():
 
 
 def test_story_refinement_skill_declares_commands_and_user_repo_scope():
-    text = Path("skills/story-refinement/SKILL.md").read_text()
+    text = Path("skills/ado-story-refinement/SKILL.md").read_text()
     required_items = [
         "## Reusable Commands",
         "resolve-story-input",
@@ -75,7 +75,7 @@ def test_story_refinement_skill_declares_commands_and_user_repo_scope():
 
 
 def test_story_refinement_skill_enforces_ado_rules_and_revision_safeguards():
-    text = Path("skills/story-refinement/SKILL.md").read_text()
+    text = Path("skills/ado-story-refinement/SKILL.md").read_text()
     required_rules = [
         "draft first",
         "require confirmation before apply",
@@ -95,7 +95,7 @@ def test_story_refinement_skill_enforces_ado_rules_and_revision_safeguards():
 
 
 def test_story_refinement_skill_handles_failure_and_blocked_paths():
-    text = Path("skills/story-refinement/SKILL.md").read_text()
+    text = Path("skills/ado-story-refinement/SKILL.md").read_text()
     required_items = [
         "stop as `blocked` when the target story is missing or inaccessible",
         "stop as `blocked` when repository scope has not been provided",
@@ -112,10 +112,10 @@ def test_story_refinement_skill_handles_failure_and_blocked_paths():
 
 
 def test_story_refinement_assets_match_the_design_contract():
-    skill_text = Path("skills/story-refinement/SKILL.md").read_text()
-    plan_text = Path("skills/story-refinement/templates/execution-plan.md").read_text()
-    package_text = Path("skills/story-refinement/templates/ado-change-package.md").read_text()
-    handoff_text = Path("skills/story-refinement/templates/progress-sync-handoff.md").read_text()
+    skill_text = Path("skills/ado-story-refinement/SKILL.md").read_text()
+    plan_text = Path("skills/ado-story-refinement/templates/execution-plan.md").read_text()
+    package_text = Path("skills/ado-story-refinement/templates/ado-change-package.md").read_text()
+    handoff_text = Path("skills/ado-story-refinement/templates/progress-sync-handoff.md").read_text()
 
     assert "refined story understanding" in skill_text
     assert "require repositories explicitly provided by the user" in skill_text
@@ -128,11 +128,11 @@ def test_story_refinement_assets_match_the_design_contract():
     assert "Pending Writes Requiring Confirmation:" in package_text
     assert "## Progress Sync Handoff" in handoff_text
     assert "Intended Scope Of Each Task:" in handoff_text
-    assert "Next Step: `progress-sync`" in handoff_text
+    assert "Next Step: `ado-progress-sync`" in handoff_text
 
 
 def test_execution_plan_template_has_required_sections():
-    text = Path("skills/story-refinement/templates/execution-plan.md").read_text()
+    text = Path("skills/ado-story-refinement/templates/execution-plan.md").read_text()
     for field in [
         "## Refined Execution Plan",
         "Target Story:",
@@ -145,7 +145,7 @@ def test_execution_plan_template_has_required_sections():
 
 
 def test_ado_change_package_template_has_required_sections():
-    text = Path("skills/story-refinement/templates/ado-change-package.md").read_text()
+    text = Path("skills/ado-story-refinement/templates/ado-change-package.md").read_text()
     for field in [
         "## Pending ADO Change Package",
         "Target Story:",
@@ -157,7 +157,7 @@ def test_ado_change_package_template_has_required_sections():
 
 
 def test_progress_sync_handoff_template_has_required_sections():
-    text = Path("skills/story-refinement/templates/progress-sync-handoff.md").read_text()
+    text = Path("skills/ado-story-refinement/templates/progress-sync-handoff.md").read_text()
     for field in [
         "## Progress Sync Handoff",
         "Target Story:",
@@ -166,6 +166,6 @@ def test_progress_sync_handoff_template_has_required_sections():
         "Intended Scope Of Each Task:",
         "Deferred Items:",
         "Unresolved Planning Gaps:",
-        "Next Step: `progress-sync`",
+        "Next Step: `ado-progress-sync`",
     ]:
         assert field in text

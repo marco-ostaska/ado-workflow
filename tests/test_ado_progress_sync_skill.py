@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 def test_progress_sync_skill_has_required_sections():
-    text = Path("skills/progress-sync/SKILL.md").read_text()
+    text = Path("skills/ado-progress-sync/SKILL.md").read_text()
     for section in [
         "## Purpose",
         "## Inputs",
@@ -14,7 +14,7 @@ def test_progress_sync_skill_has_required_sections():
 
 
 def test_progress_sync_skill_requires_full_flow_before_completion():
-    text = Path("skills/progress-sync/SKILL.md").read_text()
+    text = Path("skills/ado-progress-sync/SKILL.md").read_text()
     required_items = [
         "## Flow",
         "## Terminal States",
@@ -27,8 +27,8 @@ def test_progress_sync_skill_requires_full_flow_before_completion():
         "draft a consolidated parent-story update when appropriate",
         "prepare the pending ADO change package before any write",
         "keep the skill open until proposed writes are confirmed, applied, or explicitly deferred",
-        "produce a completion-closeout handoff",
-        "stop after producing the completion-closeout handoff",
+        "produce an ado-completion-closeout handoff",
+        "stop after producing the ado-completion-closeout handoff",
         "check completion gates before ending",
         "completed",
         "completed_with_deferrals",
@@ -39,12 +39,12 @@ def test_progress_sync_skill_requires_full_flow_before_completion():
         assert item in text
 
     assert text.index("check completion gates before ending") < text.index(
-        "stop after producing the completion-closeout handoff"
+        "stop after producing the ado-completion-closeout handoff"
     )
 
 
 def test_progress_sync_skill_declares_required_runtime_state():
-    text = Path("skills/progress-sync/SKILL.md").read_text()
+    text = Path("skills/ado-progress-sync/SKILL.md").read_text()
     assert "## Runtime State" in text
     required_state = [
         "target story identifier",
@@ -64,7 +64,7 @@ def test_progress_sync_skill_declares_required_runtime_state():
 
 
 def test_progress_sync_skill_declares_commands_and_mapping_rules():
-    text = Path("skills/progress-sync/SKILL.md").read_text()
+    text = Path("skills/ado-progress-sync/SKILL.md").read_text()
     required_items = [
         "## Reusable Commands",
         "resolve-story-input",
@@ -84,7 +84,7 @@ def test_progress_sync_skill_declares_commands_and_mapping_rules():
 
 
 def test_progress_sync_skill_enforces_ado_rules_and_test_reporting_safeguards():
-    text = Path("skills/progress-sync/SKILL.md").read_text()
+    text = Path("skills/ado-progress-sync/SKILL.md").read_text()
     required_items = [
         "draft first",
         "require confirmation before apply",
@@ -107,7 +107,7 @@ def test_progress_sync_skill_enforces_ado_rules_and_test_reporting_safeguards():
 
 
 def test_work_to_task_mapping_template_has_required_sections():
-    text = Path("skills/progress-sync/templates/work-to-task-mapping.md").read_text()
+    text = Path("skills/ado-progress-sync/templates/work-to-task-mapping.md").read_text()
     sections = [
         "## Work To Task Mapping",
         "Target Story:",
@@ -123,7 +123,7 @@ def test_work_to_task_mapping_template_has_required_sections():
 
 
 def test_completion_closeout_handoff_template_has_required_sections():
-    text = Path("skills/progress-sync/templates/completion-closeout-handoff.md").read_text()
+    text = Path("skills/ado-progress-sync/templates/completion-closeout-handoff.md").read_text()
     sections = [
         "## Completion Closeout Handoff",
         "Target Story:",
@@ -132,14 +132,14 @@ def test_completion_closeout_handoff_template_has_required_sections():
         "Reported Manual Or E2E Test Evidence:",
         "Current Story And Task Status:",
         "Deferred Items:",
-        "Next Step: `completion-closeout`",
+        "Next Step: `ado-completion-closeout`",
     ]
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     assert lines == sections
 
 
 def test_progress_sync_skill_handles_failure_and_blocked_paths():
-    text = Path("skills/progress-sync/SKILL.md").read_text()
+    text = Path("skills/ado-progress-sync/SKILL.md").read_text()
     required_items = [
         "stop as `blocked` when the target story and child tasks are missing or inaccessible",
         "stop as `blocked` when the implementation report is too incomplete to map safely",
@@ -156,7 +156,7 @@ def test_progress_sync_skill_handles_failure_and_blocked_paths():
 
 
 def test_child_task_updates_template_has_required_sections():
-    text = Path("skills/progress-sync/templates/child-task-updates.md").read_text()
+    text = Path("skills/ado-progress-sync/templates/child-task-updates.md").read_text()
     sections = [
         "## Child Task Updates",
         "Target Story:",
@@ -175,7 +175,7 @@ def test_child_task_updates_template_has_required_sections():
 
 
 def test_parent_story_update_template_has_required_sections():
-    text = Path("skills/progress-sync/templates/parent-story-update.md").read_text()
+    text = Path("skills/ado-progress-sync/templates/parent-story-update.md").read_text()
     sections = [
         "## Parent Story Update",
         "Target Story:",
@@ -191,7 +191,7 @@ def test_parent_story_update_template_has_required_sections():
 
 
 def test_progress_sync_ado_change_package_template_has_required_sections():
-    text = Path("skills/progress-sync/templates/ado-change-package.md").read_text()
+    text = Path("skills/ado-progress-sync/templates/ado-change-package.md").read_text()
     sections = [
         "## Pending ADO Change Package",
         "Target Story:",
@@ -209,19 +209,19 @@ def test_progress_sync_ado_change_package_template_has_required_sections():
 
 
 def test_progress_sync_assets_match_the_design_contract():
-    skill_text = Path("skills/progress-sync/SKILL.md").read_text()
-    mapping_text = Path("skills/progress-sync/templates/work-to-task-mapping.md").read_text()
-    child_text = Path("skills/progress-sync/templates/child-task-updates.md").read_text()
-    parent_text = Path("skills/progress-sync/templates/parent-story-update.md").read_text()
-    package_text = Path("skills/progress-sync/templates/ado-change-package.md").read_text()
+    skill_text = Path("skills/ado-progress-sync/SKILL.md").read_text()
+    mapping_text = Path("skills/ado-progress-sync/templates/work-to-task-mapping.md").read_text()
+    child_text = Path("skills/ado-progress-sync/templates/child-task-updates.md").read_text()
+    parent_text = Path("skills/ado-progress-sync/templates/parent-story-update.md").read_text()
+    package_text = Path("skills/ado-progress-sync/templates/ado-change-package.md").read_text()
     handoff_text = Path(
-        "skills/progress-sync/templates/completion-closeout-handoff.md"
+        "skills/ado-progress-sync/templates/completion-closeout-handoff.md"
     ).read_text()
 
     assert "work-to-task mapping" in skill_text
     assert "draft child-task comments and candidate status changes" in skill_text
     assert "draft a consolidated parent-story update when appropriate" in skill_text
-    assert "produce a completion-closeout handoff" in skill_text
+    assert "produce an ado-completion-closeout handoff" in skill_text
     assert "check completion gates before ending" in skill_text
     assert "## Work To Task Mapping" in mapping_text
     assert "Mapped Child Tasks:" in mapping_text
@@ -233,4 +233,4 @@ def test_progress_sync_assets_match_the_design_contract():
     assert "Child-Task Writes Requiring Confirmation:" in package_text
     assert "## Completion Closeout Handoff" in handoff_text
     assert "Current Story And Task Status:" in handoff_text
-    assert "Next Step: `completion-closeout`" in handoff_text
+    assert "Next Step: `ado-completion-closeout`" in handoff_text
