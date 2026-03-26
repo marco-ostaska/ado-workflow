@@ -78,6 +78,8 @@ def test_progress_sync_skill_declares_commands_and_mapping_rules():
         "All `draft_*` commands are read/analysis/drafting steps only.",
         "Do not invent progress that the user did not report.",
         "Do not remap reported work to unrelated tasks without evidence.",
+        "When the user has not provided the Azure DevOps project and story/task ID, ask for those values directly before any broad project, team, backlog, or query discovery.",
+        "Do not list projects, teams, backlogs, or unrelated work items when a direct project plus story/task prompt can resolve the target faster and with less noise.",
     ]
     for item in required_items:
         assert item in text

@@ -69,6 +69,8 @@ def test_story_refinement_skill_declares_commands_and_user_repo_scope():
         "Only `apply-ado-updates` may write to ADO.",
         "All `draft_*` commands are read/analysis/drafting steps only.",
         "Do not perform broad repository discovery without user input.",
+        "When the user has not provided the Azure DevOps project and story ID, ask for those values directly before any broad project, team, backlog, or query discovery.",
+        "Do not list projects, teams, backlogs, or unrelated work items when a direct project plus story prompt can resolve the target faster and with less noise.",
     ]
     for item in required_items:
         assert item in text

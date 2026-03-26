@@ -42,16 +42,18 @@ The skill must track:
 
 1. confirm the target story and/or child task context
 2. allow the skill to run in isolation when the user provides enough context
-3. review the current story and child tasks
-4. clarify the reported implementation and testing work
-5. map the reported work to the correct tasks and/or story
-6. draft child-task comments and candidate status changes
-7. draft a consolidated parent-story update when appropriate
-8. prepare the pending ADO change package before any write
-9. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
-10. produce an ado-completion-closeout handoff
-11. check completion gates before ending
-12. stop after producing the ado-completion-closeout handoff
+3. when the user has not provided the Azure DevOps project and story/task ID, ask for those values directly before any broad project, team, backlog, or query discovery
+4. do not list projects, teams, backlogs, or unrelated work items when a direct project plus story/task prompt can resolve the target faster and with less noise
+5. review the current story and child tasks
+6. clarify the reported implementation and testing work
+7. map the reported work to the correct tasks and/or story
+8. draft child-task comments and candidate status changes
+9. draft a consolidated parent-story update when appropriate
+10. prepare the pending ADO change package before any write
+11. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
+12. produce an ado-completion-closeout handoff
+13. check completion gates before ending
+14. stop after producing the ado-completion-closeout handoff
 
 ## Terminal States
 
@@ -123,3 +125,5 @@ Only `apply-ado-updates` may write to ADO.
 All `draft_*` commands are read/analysis/drafting steps only.
 Do not invent progress that the user did not report.
 Do not remap reported work to unrelated tasks without evidence.
+When the user has not provided the Azure DevOps project and story/task ID, ask for those values directly before any broad project, team, backlog, or query discovery.
+Do not list projects, teams, backlogs, or unrelated work items when a direct project plus story/task prompt can resolve the target faster and with less noise.

@@ -72,6 +72,8 @@ def test_completion_closeout_skill_declares_commands_and_closeout_rules():
         "Do not invent PR, testing, or readiness evidence that the user did not report.",
         "Do not close tasks or the story while blockers remain unresolved.",
         "Do not draft a final closeout package without resolution notes for the parent story and each closing child task.",
+        "When the user has not provided the Azure DevOps project and work item ID, ask for those two values directly before any broad project, team, backlog, or query discovery.",
+        "Do not list projects, teams, backlogs, or unrelated work items when a direct project plus work item prompt can resolve the target faster and with less noise.",
     ]
     for item in required_items:
         assert item in text
@@ -86,6 +88,7 @@ def test_completion_closeout_skill_enforces_safeguards_and_failure_paths():
         "show the final closeout package before writing",
         "include an English resolution note for every child task being closed",
         "include an English resolution note for the parent story being closed",
+        "When closing a task or story, populate `Microsoft.VSTS.Common.Resolution` with the reviewed English resolution note that matches the final closeout package.",
         "stop as `blocked` when the target story or child-task data is missing or inaccessible",
         "stop as `blocked` when closeout evidence is too incomplete to evaluate safely",
         "stop as `blocked` when required ADO data is missing and state exactly what is missing",
@@ -169,6 +172,14 @@ def test_completion_closeout_assets_match_the_design_contract():
     assert "check completion gates before ending" in skill_text
     assert "include an English resolution note for every child task being closed" in skill_text
     assert "include an English resolution note for the parent story being closed" in skill_text
+    assert (
+        "populate `Microsoft.VSTS.Common.Resolution` with the reviewed English resolution note"
+        in skill_text
+    )
+    assert (
+        "ask for those two values directly before any broad project, team, backlog, or query discovery"
+        in skill_text
+    )
     assert "## Closeout Readiness Checklist" in readiness_text
     assert "Closeout Decision:" in readiness_text
     assert "## Closeout Blockers" in blockers_text

@@ -41,16 +41,18 @@ The skill must track:
 
 1. confirm the target story context
 2. allow the skill to run in isolation when the user provides enough context
-3. review the current story and child-task state
-4. review the closeout evidence for PRs, automated tests, manual tests, and readiness
-5. evaluate whether closeout is safe
-6. produce a closeout readiness checklist
-7. produce a blockers list when closeout is not yet safe
-8. draft the final closeout package when closeout is safe
-9. prepare the pending closeout writes before any write
-10. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
-11. check completion gates before ending
-12. stop after the closeout outcome is explicit
+3. when the user has not provided the Azure DevOps project and work item ID, ask for those two values directly before any broad project, team, backlog, or query discovery
+4. do not list projects, teams, backlogs, or unrelated work items when a direct project plus work item prompt can resolve the target faster and with less noise
+5. review the current story and child-task state
+6. review the closeout evidence for PRs, automated tests, manual tests, and readiness
+7. evaluate whether closeout is safe
+8. produce a closeout readiness checklist
+9. produce a blockers list when closeout is not yet safe
+10. draft the final closeout package when closeout is safe
+11. prepare the pending closeout writes before any write
+12. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
+13. check completion gates before ending
+14. stop after the closeout outcome is explicit
 
 ## Terminal States
 
@@ -79,6 +81,7 @@ normalize ADO drafts to natural professional English before apply
 show the final closeout package before writing
 include an English resolution note for every child task being closed
 include an English resolution note for the parent story being closed
+When closing a task or story, populate `Microsoft.VSTS.Common.Resolution` with the reviewed English resolution note that matches the final closeout package.
 
 ## Failure Handling
 
@@ -110,3 +113,5 @@ All `draft_*` commands are read/analysis/drafting steps only.
 Do not invent PR, testing, or readiness evidence that the user did not report.
 Do not close tasks or the story while blockers remain unresolved.
 Do not draft a final closeout package without resolution notes for the parent story and each closing child task.
+When the user has not provided the Azure DevOps project and work item ID, ask for those two values directly before any broad project, team, backlog, or query discovery.
+Do not list projects, teams, backlogs, or unrelated work items when a direct project plus work item prompt can resolve the target faster and with less noise.

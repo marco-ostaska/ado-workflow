@@ -50,14 +50,16 @@ The skill must track:
 
 1. confirm the target story context
 2. allow the skill to run in isolation when the user provides enough context
-3. require repositories explicitly provided by the user
-4. review the current story and child tasks
-5. refine the story into a concise technical execution plan
-6. draft task revisions so the tasks match the real work
-7. prepare the pending ADO change package before any write
-8. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
-9. produce an ado-progress-sync handoff
-10. stop after producing the ado-progress-sync handoff
+3. when the user has not provided the Azure DevOps project and story ID, ask for those values directly before any broad project, team, backlog, or query discovery
+4. do not list projects, teams, backlogs, or unrelated work items when a direct project plus story prompt can resolve the target faster and with less noise
+5. require repositories explicitly provided by the user
+6. review the current story and child tasks
+7. refine the story into a concise technical execution plan
+8. draft task revisions so the tasks match the real work
+9. prepare the pending ADO change package before any write
+10. keep the skill open until proposed writes are confirmed, applied, or explicitly deferred
+11. produce an ado-progress-sync handoff
+12. stop after producing the ado-progress-sync handoff
 
 ## Terminal States
 
@@ -113,3 +115,5 @@ normalize ADO drafts to natural professional English before apply
 Only `apply-ado-updates` may write to ADO.
 All `draft_*` commands are read/analysis/drafting steps only.
 Do not perform broad repository discovery without user input.
+When the user has not provided the Azure DevOps project and story ID, ask for those values directly before any broad project, team, backlog, or query discovery.
+Do not list projects, teams, backlogs, or unrelated work items when a direct project plus story prompt can resolve the target faster and with less noise.
