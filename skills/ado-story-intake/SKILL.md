@@ -1,13 +1,13 @@
 ---
 name: ado-story-intake
-description: Intake Azure DevOps stories, assess minimum compliance, and prepare a refinement handoff
+description: Intake Azure DevOps stories, assess minimum sprint-start compliance, and prepare the next-step handoff
 ---
 
 # Story Intake
 
 ## Purpose
 
-Find or accept target stories, present a triage view, assess minimum compliance, and stop only after producing a structured handoff for refinement.
+Find or accept target stories, present a triage view, assess minimum sprint-start compliance, and stop only after producing a structured handoff for the next step.
 
 ## Entry Modes
 
@@ -20,14 +20,14 @@ Find or accept target stories, present a triage view, assess minimum compliance,
 - open questions
 - compliance diagnosis
 - compliance task draft when needed
-- refinement handoff
+- next-step handoff
 
 ## Completion Gate
 
 - selected story
 - triage output shown
 - compliance evaluated
-- handoff generated
+- next-step handoff generated
 - check completion gates before ending
 
 ## Runtime State
@@ -61,11 +61,14 @@ All `draft_*` commands are read/analysis/drafting steps only.
 2. present the triage list before action
 3. user selects the target story
 4. list open questions when the story is ambiguous
-5. evaluate minimum compliance
-6. draft missing compliance tasks when needed
-7. keep the skill open until missing minimum tasks are confirmed, applied, or explicitly deferred
-8. produce a refinement handoff
-9. stop after producing the refinement handoff
+5. evaluate minimum sprint-start compliance
+6. treat `story points = open child tasks` as an absolute team rule
+7. count only open child tasks assigned to the story owner toward compliance
+8. draft missing compliance tasks when needed
+9. assign each new child task to the story owner
+10. keep the skill open until missing minimum tasks are confirmed, applied, or explicitly deferred
+11. produce a next-step handoff
+12. stop after producing the next-step handoff
 
 ## Terminal States
 
@@ -86,6 +89,9 @@ Refuse to apply updates if draft content contains AI-origin disclosure.
 ## Compliance Handling
 
 - prepare minimum compliance tasks when needed
+- use the story's current story points value as the required number of open child tasks
+- treat the story owner as the required assignee for compliance child tasks
+- if open child task count assigned to the story owner is lower than story points, draft the exact missing number of tasks
 - show the proposal before writing
 - apply only after user confirmation
 - allow deferred items and record them in the handoff
@@ -94,6 +100,7 @@ Refuse to apply updates if draft content contains AI-origin disclosure.
 
 - stop as `blocked` when required ADO data is missing and state exactly what is missing
 - when story understanding is ambiguous, record open questions instead of inventing certainty
+- do not force refinement during sprint-start compliance intake when story understanding is still incomplete
 - do not proceed without confirmation
 - report partial write failures
 - summarize applied writes after execution

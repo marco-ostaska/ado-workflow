@@ -22,11 +22,14 @@ def test_story_intake_skill_requires_full_flow_before_completion():
         "present the triage list before action",
         "user selects the target story",
         "list open questions when the story is ambiguous",
-        "evaluate minimum compliance",
+        "evaluate minimum sprint-start compliance",
+        "treat `story points = open child tasks` as an absolute team rule",
+        "count only open child tasks assigned to the story owner toward compliance",
         "draft missing compliance tasks when needed",
+        "assign each new child task to the story owner",
         "keep the skill open until missing minimum tasks are confirmed, applied, or explicitly deferred",
-        "produce a refinement handoff",
-        "stop after producing the refinement handoff",
+        "produce a next-step handoff",
+        "stop after producing the next-step handoff",
         "completed",
         "completed_with_deferrals",
         "blocked",
@@ -89,11 +92,15 @@ def test_story_intake_skill_handles_compliance_and_failure_paths():
     text = Path("skills/ado-story-intake/SKILL.md").read_text()
     required_items = [
         "prepare minimum compliance tasks",
+        "use the story's current story points value as the required number of open child tasks",
+        "treat the story owner as the required assignee for compliance child tasks",
+        "if open child task count assigned to the story owner is lower than story points, draft the exact missing number of tasks",
         "show the proposal before writing",
         "apply only after user confirmation",
         "allow deferred items",
         "stop as `blocked` when required ADO data is missing and state exactly what is missing",
         "when story understanding is ambiguous, record open questions instead of inventing certainty",
+        "do not force refinement during sprint-start compliance intake when story understanding is still incomplete",
         "do not proceed without confirmation",
         "report partial write failures",
         "summarize applied writes after execution",
@@ -114,15 +121,17 @@ def test_story_triage_template_has_required_list_fields():
         assert field in text
 
 
-def test_refinement_handoff_template_has_required_sections():
+def test_next_step_handoff_template_has_required_sections():
     text = Path("skills/ado-story-intake/templates/refinement-handoff.md").read_text()
     for field in [
+        "## Next-Step Handoff",
         "Target Story:",
         "Story Overview:",
         "Open Questions:",
         "Current Child Tasks:",
         "Compliance Gaps:",
         "Deferred Items:",
+        "Recommended Next Step:",
     ]:
         assert field in text
 
@@ -133,11 +142,14 @@ def test_story_intake_assets_match_the_design_contract():
     handoff_text = Path("skills/ado-story-intake/templates/refinement-handoff.md").read_text()
 
     assert "story triage list" in skill_text
-    assert "stop after producing the refinement handoff" in skill_text
+    assert "stop after producing the next-step handoff" in skill_text
     assert "record open questions instead of inventing certainty" in skill_text
     assert "check completion gates before ending" in skill_text
+    assert "story points = open child tasks" in skill_text
+    assert "assign each new child task to the story owner" in skill_text
     assert "## Story Triage List" in triage_text
     assert "Story ID | Title | Description | Existing Tasks | Overview | Open Questions | Compliance Status" in triage_text
     assert "Choose a target story before any write action." in triage_text
+    assert "## Next-Step Handoff" in handoff_text
     assert "Target Story:" in handoff_text
-    assert "Next Step: `ado-story-refinement`" in handoff_text
+    assert "Recommended Next Step:" in handoff_text
