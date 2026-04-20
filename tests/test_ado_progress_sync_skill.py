@@ -38,6 +38,9 @@ def test_progress_sync_skill_requires_full_flow_before_completion():
     for item in required_items:
         assert item in text
 
+    assert text.index("produce an ado-completion-closeout handoff") < text.index(
+        "check completion gates before ending"
+    )
     assert text.index("check completion gates before ending") < text.index(
         "stop after producing the ado-completion-closeout handoff"
     )
@@ -88,6 +91,7 @@ def test_progress_sync_skill_declares_commands_and_mapping_rules():
 def test_progress_sync_skill_enforces_ado_rules_and_test_reporting_safeguards():
     text = Path("skills/ado-progress-sync/SKILL.md").read_text()
     required_items = [
+        "Conduct this entire skill session in English, including all responses, questions, and intermediate drafts, regardless of the user's language.",
         "draft first",
         "require confirmation before apply",
         "All content written to Azure DevOps must be in English.",
@@ -95,6 +99,9 @@ def test_progress_sync_skill_enforces_ado_rules_and_test_reporting_safeguards():
         "Refuse to apply updates if draft content is not English.",
         "Refuse to apply updates if draft content contains AI-origin disclosure.",
         "normalize ADO drafts to natural professional English before apply",
+        "When a proposed status change closes a child task (Done, Closed, Resolved), include a resolution note for that task in the draft.",
+        "When closing a child task, populate `Microsoft.VSTS.Common.Resolution` with the English resolution note from the draft.",
+        "Do not apply a status change that closes a task without a corresponding resolution note.",
         "report automated and manual test outcomes separately when both exist",
         "do not claim tests were run when the user did not report them",
         "show child-task update drafts before writing",
@@ -166,6 +173,7 @@ def test_child_task_updates_template_has_required_sections():
         "Task Updates:",
         "Child-Task Comment Drafts:",
         "Proposed Status Changes:",
+        "Resolution Notes For Closing Tasks:",
         "Reported Automated Test Evidence:",
         "Reported Manual Or E2E Test Evidence:",
     ]
@@ -199,6 +207,7 @@ def test_progress_sync_ado_change_package_template_has_required_sections():
         "Target Story:",
         "Mapped Child Tasks:",
         "Child-Task Writes Requiring Confirmation:",
+        "Resolution Notes For Closing Tasks:",
         "Parent-Story Write Requiring Confirmation:",
         "Include only when a parent-story update is appropriate.",
         "Deferred Items:",

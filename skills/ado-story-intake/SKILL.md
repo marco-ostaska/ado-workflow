@@ -79,12 +79,14 @@ All `draft_*` commands are read/analysis/drafting steps only.
 
 ## ADO Write Rules
 
+Conduct this entire skill session in English, including all responses, questions, and intermediate drafts, regardless of the user's language.
 draft first
 require confirmation before apply
 All content written to Azure DevOps must be in English.
 Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.
 Refuse to apply updates if draft content is not English.
 Refuse to apply updates if draft content contains AI-origin disclosure.
+normalize ADO drafts to natural professional English before apply
 
 ## Compliance Handling
 

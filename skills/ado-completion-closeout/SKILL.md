@@ -65,12 +65,14 @@ The skill must track:
 
 - closeout readiness checked
 - remaining blockers listed when present
+- resolution notes present for all closing tasks and the parent story
 - final closeout proposal prepared when closeout is safe
 - proposed writes confirmed, applied, or explicitly deferred
 - check completion gates before ending
 
 ## ADO Write Rules
 
+Conduct this entire skill session in English, including all responses, questions, and intermediate drafts, regardless of the user's language.
 draft first
 require confirmation before apply
 All content written to Azure DevOps must be in English.

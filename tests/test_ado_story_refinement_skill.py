@@ -37,6 +37,10 @@ def test_story_refinement_skill_requires_full_flow_before_completion():
     for item in required_items:
         assert item in text
 
+    assert text.index("produce an ado-progress-sync handoff") < text.index(
+        "stop after producing the ado-progress-sync handoff"
+    )
+
 
 def test_story_refinement_skill_declares_required_runtime_state():
     text = Path("skills/ado-story-refinement/SKILL.md").read_text()
@@ -79,6 +83,7 @@ def test_story_refinement_skill_declares_commands_and_user_repo_scope():
 def test_story_refinement_skill_enforces_ado_rules_and_revision_safeguards():
     text = Path("skills/ado-story-refinement/SKILL.md").read_text()
     required_rules = [
+        "Conduct this entire skill session in English, including all responses, questions, and intermediate drafts, regardless of the user's language.",
         "draft first",
         "require confirmation before apply",
         "All content written to Azure DevOps must be in English.",

@@ -82,6 +82,8 @@ def test_completion_closeout_skill_declares_commands_and_closeout_rules():
 def test_completion_closeout_skill_enforces_safeguards_and_failure_paths():
     text = Path("skills/ado-completion-closeout/SKILL.md").read_text()
     required_items = [
+        "Conduct this entire skill session in English, including all responses, questions, and intermediate drafts, regardless of the user's language.",
+        "resolution notes present for all closing tasks and the parent story",
         "Refuse to apply updates if draft content is not English.",
         "Refuse to apply updates if draft content contains AI-origin disclosure.",
         "normalize ADO drafts to natural professional English before apply",

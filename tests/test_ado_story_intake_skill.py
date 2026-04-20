@@ -38,6 +38,10 @@ def test_story_intake_skill_requires_full_flow_before_completion():
     for item in required_items:
         assert item in text
 
+    assert text.index("produce a next-step handoff") < text.index(
+        "stop after producing the next-step handoff"
+    )
+
 
 def test_story_intake_skill_declares_required_runtime_state():
     text = Path("skills/ado-story-intake/SKILL.md").read_text()
@@ -77,12 +81,14 @@ def test_story_intake_skill_declares_reusable_commands_and_single_write_command(
 def test_story_intake_skill_enforces_ado_language_and_discretion_rules():
     text = Path("skills/ado-story-intake/SKILL.md").read_text()
     required_rules = [
+        "Conduct this entire skill session in English, including all responses, questions, and intermediate drafts, regardless of the user's language.",
         "draft first",
         "require confirmation before apply",
         "All content written to Azure DevOps must be in English.",
         "Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.",
         "Refuse to apply updates if draft content is not English.",
         "Refuse to apply updates if draft content contains AI-origin disclosure.",
+        "normalize ADO drafts to natural professional English before apply",
     ]
     for rule in required_rules:
         assert rule in text

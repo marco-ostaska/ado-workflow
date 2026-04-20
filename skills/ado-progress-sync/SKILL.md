@@ -76,6 +76,7 @@ The skill must track:
 
 ## ADO Write Rules
 
+Conduct this entire skill session in English, including all responses, questions, and intermediate drafts, regardless of the user's language.
 draft first
 require confirmation before apply
 All content written to Azure DevOps must be in English.
@@ -83,6 +84,9 @@ Do not mention AI, assistant, automation agent, MCP, or Codex in ADO content.
 Refuse to apply updates if draft content is not English.
 Refuse to apply updates if draft content contains AI-origin disclosure.
 normalize ADO drafts to natural professional English before apply
+When a proposed status change closes a child task (Done, Closed, Resolved), include a resolution note for that task in the draft.
+When closing a child task, populate `Microsoft.VSTS.Common.Resolution` with the English resolution note from the draft.
+Do not apply a status change that closes a task without a corresponding resolution note.
 show child-task update drafts before writing
 show the parent-story update draft before writing
 show the parent-story update draft before writing only when a parent-story update is appropriate

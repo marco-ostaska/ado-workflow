@@ -70,6 +70,7 @@ The skill must track:
 
 ## ADO Write Rules
 
+Conduct this entire skill session in English, including all responses, questions, and intermediate drafts, regardless of the user's language.
 draft first
 require confirmation before apply
 All content written to Azure DevOps must be in English.
