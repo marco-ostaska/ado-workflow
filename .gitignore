@@ -8,3 +8,8 @@ pre-plan.md
 resume.md
 tests/__pycache__/
 workflow.md
+
+# Local skill directories (created by init-skills.sh, user-specific)
+.claude/ado-workflow/
+.codex/ado-workflow/
+.opencode/ado-workflow/
