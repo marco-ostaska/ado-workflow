@@ -8,26 +8,40 @@
 
 set -e
 
-REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-cd "$REPO_ROOT"
+REPO_ROOT=$(git -C "${PWD}" rev-parse --show-toplevel 2>/dev/null || pwd)
+SKILL_NAMES=("ado-story-intake" "ado-story-refinement" "ado-progress-sync" "ado-completion-closeout" "ado-to-prd")
 
 # Default to --all if no argument provided
 MODE="${1:---all}"
 
 unload_platform() {
   local platform="$1"
-  local target_dir="$2"
+  local target_dir="$REPO_ROOT/$2"
+  local skills_dir="$target_dir/skills"
+  local removed=false
 
-  if [ ! -d "$target_dir/ado-workflow" ]; then
-    echo "  $platform skills not found at $target_dir/ado-workflow/"
+  for skill_name in "${SKILL_NAMES[@]}"; do
+    local skill_path="$skills_dir/$skill_name"
+
+    if [ -L "$skill_path" ] || [ -e "$skill_path" ]; then
+      rm -rf "$skill_path"
+      echo "  ✓ Removed $skill_name"
+      removed=true
+    fi
+  done
+
+  if [ "$removed" = false ]; then
+    echo "  $platform skills not found at $skills_dir/"
     return
   fi
 
-  echo "Removing $platform skills from $target_dir..."
-  rm -rf "$target_dir/ado-workflow"
   echo "✓ $platform skills removed"
 
-  # Clean up empty parent directory if it exists and is empty
+  if [ -d "$skills_dir" ] && [ -z "$(ls -A "$skills_dir")" ]; then
+    rmdir "$skills_dir"
+    echo "  Cleaned up empty $skills_dir/"
+  fi
+
   if [ -d "$target_dir" ] && [ -z "$(ls -A "$target_dir")" ]; then
     rmdir "$target_dir"
     echo "  Cleaned up empty $target_dir/"
