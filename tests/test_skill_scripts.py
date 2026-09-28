@@ -32,6 +32,7 @@ def run_script(script: Path, mode: str, cwd: Path) -> subprocess.CompletedProces
         ("--claude", ".claude"),
         ("--codex", ".codex"),
         ("--opencode", ".opencode"),
+        ("--pi", ".agents"),
     ),
 )
 def test_unload_removes_only_project_skills_created_by_init(

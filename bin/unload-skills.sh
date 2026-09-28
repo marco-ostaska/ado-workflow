@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# unload-skills.sh — Remove local project skills from Claude Code, Codex, and/or OpenCode
+# unload-skills.sh — Remove local project skills from Claude Code, Codex, OpenCode, and/or Pi
 # Usage:
-#   ./unload-skills.sh --all       # Remove from .claude/, .codex/, and .opencode/
+#   ./unload-skills.sh --all       # Remove from .claude/, .codex/, .opencode/, and .agents/
 #   ./unload-skills.sh --claude    # Remove from .claude/ only
 #   ./unload-skills.sh --codex     # Remove from .codex/ only
 #   ./unload-skills.sh --opencode  # Remove from .opencode/ only
+#   ./unload-skills.sh --pi        # Remove from .agents/ only
 
 set -e
 
@@ -53,6 +54,7 @@ case "$MODE" in
     unload_platform "Claude Code" ".claude"
     unload_platform "Codex" ".codex"
     unload_platform "OpenCode" ".opencode"
+    unload_platform "Pi" ".agents"
     echo ""
     echo "✓ All platforms unloaded!"
     ;;
@@ -71,14 +73,20 @@ case "$MODE" in
     echo ""
     echo "✓ OpenCode unloaded!"
     ;;
+  --pi)
+    unload_platform "Pi" ".agents"
+    echo ""
+    echo "✓ Pi unloaded!"
+    ;;
   *)
-    echo "Usage: $0 [--all|--claude|--codex|--opencode]"
+    echo "Usage: $0 [--all|--claude|--codex|--opencode|--pi]"
     echo ""
     echo "Options:"
-    echo "  --all       Remove from Claude Code, Codex, and OpenCode"
+    echo "  --all       Remove from Claude Code, Codex, OpenCode, and Pi"
     echo "  --claude    Remove from Claude Code only"
     echo "  --codex     Remove from Codex only"
     echo "  --opencode  Remove from OpenCode only"
+    echo "  --pi        Remove from Pi only (.agents/skills)"
     exit 1
     ;;
 esac

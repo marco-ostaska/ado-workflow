@@ -57,31 +57,48 @@ All four skills follow the same core safeguards:
 - your environment can access the Azure DevOps MCP or equivalent ADO tools you intend to use
 - `pytest` is installed if you want to run the contract tests
 
+## Project-Local Install (recommended)
+
+From this repository (or any consumer repo where you want the skills available to local agents):
+
+```bash
+./bin/init-skills.sh --all       # .claude/, .codex/, .opencode/, .agents/
+./bin/init-skills.sh --claude    # Claude Code only
+./bin/init-skills.sh --codex     # Codex only
+./bin/init-skills.sh --opencode  # OpenCode only
+./bin/init-skills.sh --pi        # Pi only (.agents/skills)
+./bin/unload-skills.sh --all     # remove the project-local links
+```
+
+Each platform gets relative symlinks under `<platform>/skills/<skill-name>` pointing at this repo's canonical `skills/` tree.
+
 ## Install In Claude Code
 
-Recommended target path:
+Recommended global target path:
 
 ```text
-~/.claude/skills/ado-workflow/
+~/.claude/skills/
 ```
 
 Create symlinks from this repository into your Claude Code local skills directory:
 
 ```bash
-mkdir -p ~/.claude/skills/ado-workflow
-ln -s /absolute/path/to/ado-workflows/skills/ado-story-intake ~/.claude/skills/ado-workflow/ado-story-intake
-ln -s /absolute/path/to/ado-workflows/skills/ado-story-refinement ~/.claude/skills/ado-workflow/ado-story-refinement
-ln -s /absolute/path/to/ado-workflows/skills/ado-progress-sync ~/.claude/skills/ado-workflow/ado-progress-sync
-ln -s /absolute/path/to/ado-workflows/skills/ado-completion-closeout ~/.claude/skills/ado-workflow/ado-completion-closeout
+mkdir -p ~/.claude/skills
+ln -s /absolute/path/to/ado-workflows/skills/ado-story-intake ~/.claude/skills/ado-story-intake
+ln -s /absolute/path/to/ado-workflows/skills/ado-story-refinement ~/.claude/skills/ado-story-refinement
+ln -s /absolute/path/to/ado-workflows/skills/ado-progress-sync ~/.claude/skills/ado-progress-sync
+ln -s /absolute/path/to/ado-workflows/skills/ado-completion-closeout ~/.claude/skills/ado-completion-closeout
+ln -s /absolute/path/to/ado-workflows/skills/ado-to-prd ~/.claude/skills/ado-to-prd
 ```
 
 Expected result:
 
 ```text
-~/.claude/skills/ado-workflow/ado-story-intake/SKILL.md
-~/.claude/skills/ado-workflow/ado-story-refinement/SKILL.md
-~/.claude/skills/ado-workflow/ado-progress-sync/SKILL.md
-~/.claude/skills/ado-workflow/ado-completion-closeout/SKILL.md
+~/.claude/skills/ado-story-intake/SKILL.md
+~/.claude/skills/ado-story-refinement/SKILL.md
+~/.claude/skills/ado-progress-sync/SKILL.md
+~/.claude/skills/ado-completion-closeout/SKILL.md
+~/.claude/skills/ado-to-prd/SKILL.md
 ```
 
 Then restart Claude Code if it caches skill discovery, and invoke:
@@ -91,40 +108,76 @@ $ado-story-intake
 $ado-story-refinement
 $ado-progress-sync
 $ado-completion-closeout
+$ado-to-prd
 ```
 
-If your Claude Code setup uses a different local skills root, keep the same directory shape and place these four skill folders under that root instead.
+If your Claude Code setup uses a different local skills root, keep the same directory shape and place these skill folders under that root instead.
 
 ## Install In Codex
 
-Recommended target path:
+Recommended global target path:
 
 ```text
-~/.codex/skills/ado-workflow/
+~/.codex/skills/
 ```
 
 Create symlinks from this repository into your Codex local skills directory:
 
 ```bash
-mkdir -p ~/.codex/skills/ado-workflow
-ln -s /absolute/path/to/ado-workflows/skills/ado-story-intake ~/.codex/skills/ado-workflow/ado-story-intake
-ln -s /absolute/path/to/ado-workflows/skills/ado-story-refinement ~/.codex/skills/ado-workflow/ado-story-refinement
-ln -s /absolute/path/to/ado-workflows/skills/ado-progress-sync ~/.codex/skills/ado-workflow/ado-progress-sync
-ln -s /absolute/path/to/ado-workflows/skills/ado-completion-closeout ~/.codex/skills/ado-workflow/ado-completion-closeout
+mkdir -p ~/.codex/skills
+ln -s /absolute/path/to/ado-workflows/skills/ado-story-intake ~/.codex/skills/ado-story-intake
+ln -s /absolute/path/to/ado-workflows/skills/ado-story-refinement ~/.codex/skills/ado-story-refinement
+ln -s /absolute/path/to/ado-workflows/skills/ado-progress-sync ~/.codex/skills/ado-progress-sync
+ln -s /absolute/path/to/ado-workflows/skills/ado-completion-closeout ~/.codex/skills/ado-completion-closeout
+ln -s /absolute/path/to/ado-workflows/skills/ado-to-prd ~/.codex/skills/ado-to-prd
 ```
 
 Expected result:
 
 ```text
-~/.codex/skills/ado-workflow/ado-story-intake/SKILL.md
-~/.codex/skills/ado-workflow/ado-story-refinement/SKILL.md
-~/.codex/skills/ado-workflow/ado-progress-sync/SKILL.md
-~/.codex/skills/ado-workflow/ado-completion-closeout/SKILL.md
+~/.codex/skills/ado-story-intake/SKILL.md
+~/.codex/skills/ado-story-refinement/SKILL.md
+~/.codex/skills/ado-progress-sync/SKILL.md
+~/.codex/skills/ado-completion-closeout/SKILL.md
+~/.codex/skills/ado-to-prd/SKILL.md
 ```
 
 Then restart the Codex session if needed and invoke the skill by name.
 
-If your Codex environment uses another local skills root, keep the same directory shape and place the four skill folders there.
+If your Codex environment uses another local skills root, keep the same directory shape and place the skill folders there.
+
+## Install In Pi (pi.dev)
+
+Pi discovers Agent Skills from project `.agents/skills/` (and globally from `~/.agents/skills/`). Prefer the project-local init script so every agent shares the same canonical `skills/` tree:
+
+```bash
+./bin/init-skills.sh --pi
+```
+
+Expected result:
+
+```text
+.agents/skills/ado-story-intake -> ../../skills/ado-story-intake
+.agents/skills/ado-story-refinement -> ../../skills/ado-story-refinement
+.agents/skills/ado-progress-sync -> ../../skills/ado-progress-sync
+.agents/skills/ado-completion-closeout -> ../../skills/ado-completion-closeout
+.agents/skills/ado-to-prd -> ../../skills/ado-to-prd
+```
+
+Optional global install:
+
+```bash
+mkdir -p ~/.agents/skills
+ln -s /absolute/path/to/ado-workflows/skills/ado-story-intake ~/.agents/skills/ado-story-intake
+ln -s /absolute/path/to/ado-workflows/skills/ado-story-refinement ~/.agents/skills/ado-story-refinement
+ln -s /absolute/path/to/ado-workflows/skills/ado-progress-sync ~/.agents/skills/ado-progress-sync
+ln -s /absolute/path/to/ado-workflows/skills/ado-completion-closeout ~/.agents/skills/ado-completion-closeout
+ln -s /absolute/path/to/ado-workflows/skills/ado-to-prd ~/.agents/skills/ado-to-prd
+```
+
+Then restart Pi or run `/reload` if a session is already open, and invoke skills by name (for example `/skill:ado-story-intake`).
+
+Do not mirror into `.pi/skills/` for this repo: Pi already loads `.agents/skills/`, and a second mirror would drift.
 
 ## Install In Copilot CLI
 

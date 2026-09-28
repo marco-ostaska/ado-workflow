@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# init-skills.sh — Initialize local project skills for Claude Code, Codex, and/or OpenCode
+# init-skills.sh — Initialize local project skills for Claude Code, Codex, OpenCode, and/or Pi
 # Usage:
-#   ./init-skills.sh --all       # Create in .claude/, .codex/, and .opencode/
+#   ./init-skills.sh --all       # Create in .claude/, .codex/, .opencode/, and .agents/
 #   ./init-skills.sh --claude    # Create in .claude/ only
 #   ./init-skills.sh --codex     # Create in .codex/ only
 #   ./init-skills.sh --opencode  # Create in .opencode/ only
+#   ./init-skills.sh --pi        # Create in .agents/ only (pi.dev Agent Skills path)
 
 set -e
 
@@ -70,11 +71,13 @@ case "$MODE" in
     setup_platform "Claude Code" ".claude"
     setup_platform "Codex" ".codex"
     setup_platform "OpenCode" ".opencode"
+    setup_platform "Pi" ".agents"
     echo ""
     echo "✓ All platforms initialized!"
     echo "  .claude/skills/     (Claude Code)"
     echo "  .codex/skills/      (Codex)"
     echo "  .opencode/skills/   (OpenCode)"
+    echo "  .agents/skills/     (Pi / Agent Skills)"
     ;;
   --claude)
     setup_platform "Claude Code" ".claude"
@@ -94,14 +97,21 @@ case "$MODE" in
     echo "✓ OpenCode initialized!"
     echo "  .opencode/skills/"
     ;;
+  --pi)
+    setup_platform "Pi" ".agents"
+    echo ""
+    echo "✓ Pi initialized!"
+    echo "  .agents/skills/"
+    ;;
   *)
-    echo "Usage: $0 [--all|--claude|--codex|--opencode]"
+    echo "Usage: $0 [--all|--claude|--codex|--opencode|--pi]"
     echo ""
     echo "Options:"
-    echo "  --all       Initialize for Claude Code, Codex, and OpenCode"
+    echo "  --all       Initialize for Claude Code, Codex, OpenCode, and Pi"
     echo "  --claude    Initialize for Claude Code only"
     echo "  --codex     Initialize for Codex only"
     echo "  --opencode  Initialize for OpenCode only"
+    echo "  --pi        Initialize for Pi only (.agents/skills)"
     exit 1
     ;;
 esac
